@@ -1,0 +1,96 @@
+name: Notify search engines
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - "404.html"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: search-discovery-main
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+
+      - name: Wait for production deployment
+        shell: bash
+        run: |
+          for attempt in {1..18}; do
+            status=$(curl --silent --output /dev/null --write-out "%{http_code}" https://felix-keuya-portfolio.vercel.app/ || true)
+            if [ "$status" = "200" ]; then
+              echo "Production site is reachable."
+              exit 0
+            fi
+            echo "Attempt $attempt: production returned $status; retrying in 10 seconds."
+            sleep 10
+          done
+          echo "Production was not reachable within the wait period."
+          exit 1
+
+      - name: Build IndexNow payload from sitemap
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import xml.etree.ElementTree as ET
+
+          root = ET.parse("sitemap.xml").getroot()
+          namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [node.text.strip() for node in root.findall("sm:url/sm:loc", namespace) if node.text]
+          payload = {
+              "host": "felix-keuya-portfolio.vercel.app",
+              "key": "7466da5f4210c73cef578955ef7f5a42",
+              "keyLocation": "https://felix-keuya-portfolio.vercel.app/7466da5f4210c73cef578955ef7f5a42.txt",
+              "urlList": urls,
+          }
+          with open("/tmp/indexnow.json", "w", encoding="utf-8") as handle:
+              json.dump(payload, handle)
+          print(f"Prepared {len(urls)} canonical URLs for IndexNow.")
+          PY
+
+      - name: Notify IndexNow search engines
+        shell: bash
+        run: |
+          code=$(curl --silent --show-error --retry 3 --retry-all-errors \
+            --output /tmp/indexnow-response.txt --write-out "%{http_code}" \
+            --request POST \
+            --header "Content-Type: application/json; charset=utf-8" \
+            --data-binary @/tmp/indexnow.json \
+            https://api.indexnow.org/indexnow)
+          cat /tmp/indexnow-response.txt || true
+          echo "IndexNow HTTP status: $code"
+          case "$code" in
+            200|202) exit 0 ;;
+            *) exit 1 ;;
+          esac
+
+      - name: Notify Google WebSub hub
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+            --request POST \
+            --header "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "hub.mode=publish" \
+            --data-urlencode "hub.url=https://felix-keuya-portfolio.vercel.app/feed.xml" \
+            https://pubsubhubbub.appspot.com/
+
+      - name: Notify open-source WebSub hub
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+            --request POST \
+            --header "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "hub.mode=publish" \
+            --data-urlencode "hub.url=https://felix-keuya-portfolio.vercel.app/feed.xml" \
+            https://websubhub.com/hub
