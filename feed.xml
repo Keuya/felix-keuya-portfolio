@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Felix Keuya Renewable Energy Project Finance</title>
+  <subtitle>Renewable energy financial models, investment memos, corporate PPA and wheeling analysis, and African power-market diligence.</subtitle>
+  <id>https://felix-keuya-portfolio.vercel.app/</id>
+  <link rel="self" type="application/atom+xml" href="https://felix-keuya-portfolio.vercel.app/feed.xml"/>
+  <link rel="alternate" type="text/html" href="https://felix-keuya-portfolio.vercel.app/"/>
+  <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+  <link rel="hub" href="https://websubhub.com/hub"/>
+  <updated>2026-08-05T14:55:00Z</updated>
+  <author><name>Felix Keuya</name></author>
+
+  <entry>
+    <title>Renewable Energy Project Finance Analyst in Africa</title>
+    <id>https://felix-keuya-portfolio.vercel.app/</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Project finance, commercial diligence and white-label analyst support for renewable energy developers, investors, lenders and advisers.</summary>
+  </entry>
+  <entry>
+    <title>Renewable Energy Project Finance Services</title>
+    <id>https://felix-keuya-portfolio.vercel.app/services.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/services.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Decision sprints, transaction reviews and embedded analyst support for solar, BESS, corporate PPA, wheeling and African power-market assignments.</summary>
+  </entry>
+  <entry>
+    <title>Selected Renewable Energy Project Finance Work</title>
+    <id>https://felix-keuya-portfolio.vercel.app/work.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/work.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Anonymised and representative case studies covering lender modelling, investment committee analysis, grid risk and African project development.</summary>
+  </entry>
+  <entry>
+    <title>Public Renewable Energy Models and Samples</title>
+    <id>https://felix-keuya-portfolio.vercel.app/samples.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/samples.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Interactive public model viewers and sample packs for solar project finance, corporate PPA and wheeling, REC readiness and investment decision support.</summary>
+  </entry>
+  <entry>
+    <title>50 MWac Solar IPP Project Finance Model</title>
+    <id>https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Public lender-style solar model showing sources and uses, debt service, DSCR, LLCR, sensitivities and model checks.</summary>
+  </entry>
+  <entry>
+    <title>South African Corporate PPA and Wheeling Model</title>
+    <id>https://felix-keuya-portfolio.vercel.app/models/sa-corporate-ppa-wheeling-model.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/models/sa-corporate-ppa-wheeling-model.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Representative commercial model covering delivered energy cost, network charges, buyer savings and generator economics.</summary>
+  </entry>
+  <entry>
+    <title>Zambia Solar IPP Lender Model and Bankability Review</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/zambia-solar-project-finance-model.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/zambia-solar-project-finance-model.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>An anonymised utility-scale solar case covering debt sizing, cash waterfall, reserves, PPA risk and downside resilience.</summary>
+  </entry>
+  <entry>
+    <title>South Africa Corporate PPA and Wheeling Case</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/south-africa-corporate-ppa-wheeling.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/south-africa-corporate-ppa-wheeling.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>A representative South African corporate power case covering load matching, losses, residual supply, buyer savings and bankability.</summary>
+  </entry>
+  <entry>
+    <title>Grid Connection and Curtailment Analysis</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/grid-connection-curtailment-analysis.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/grid-connection-curtailment-analysis.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Technical-commercial analysis linking grid access, dispatch constraints and curtailment allocation to revenue and debt-service risk.</summary>
+  </entry>
+  <entry>
+    <title>Investment Committee Memo and Solar Plus BESS Valuation</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/investment-committee-memo-project-valuation.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/investment-committee-memo-project-valuation.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>A solar plus six-hour BESS investment case covering valuation, financing, sensitivities, risks and a conditional recommendation.</summary>
+  </entry>
+  <entry>
+    <title>Sub-Saharan Africa Mining-Power Opportunity Screen</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/ssa-mining-power-opportunity-screen.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/ssa-mining-power-opportunity-screen.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>An anonymised opportunity screen linking mining demand, power constraints and renewable development hypotheses to a prioritised diligence plan.</summary>
+  </entry>
+  <entry>
+    <title>500 kW REC Readiness and Commercial Model</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/rec-readiness-commercial-model.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/rec-readiness-commercial-model.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>A synthetic REC-readiness case covering attribute rights, metering, reconciliation, commercial scenarios and lender treatment.</summary>
+  </entry>
+  <entry>
+    <title>African Renewable Project Development Experience</title>
+    <id>https://felix-keuya-portfolio.vercel.app/projects/africa-renewable-project-development-portfolio.html</id>
+    <link href="https://felix-keuya-portfolio.vercel.app/projects/africa-renewable-project-development-portfolio.html"/>
+    <updated>2026-08-05T14:55:00Z</updated>
+    <summary>Selected Zambia, DRC, Kenya and wider African project-development, commercial and market-analysis exposure.</summary>
+  </entry>
+</feed>
