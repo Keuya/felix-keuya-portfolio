@@ -201,6 +201,49 @@ footer .footer-grid{
   align-items:start;
 }
 
+/* Keep direct contact details private until a visitor chooses an action. */
+a[href^="mailto:"],
+a[href^="tel:"]{
+  font-size:0 !important;
+  text-decoration:none;
+}
+
+a[href^="mailto:"]::after,
+a[href^="tel:"]::after{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  font-size:.86rem;
+  font-weight:650;
+  line-height:1.4;
+  letter-spacing:0;
+}
+
+a[href^="mailto:"]::after{
+  content:"Email Felix ↗";
+}
+
+a[href^="tel:"]::after{
+  content:"Call Felix ↗";
+}
+
+.contact-box a[href^="mailto:"],
+.contact-box a[href^="tel:"]{
+  display:flex;
+  width:max-content;
+  max-width:100%;
+  margin-top:8px;
+  padding:10px 13px;
+  border:1px solid var(--line);
+  background:var(--paper-2);
+}
+
+.contact-box a[href^="mailto:"]:hover,
+.contact-box a[href^="tel:"]:hover{
+  border-color:var(--amber-deep);
+  background:#fff;
+}
+
 @media(max-width:1000px){
   .client-section-heading,
   .section-heading{
