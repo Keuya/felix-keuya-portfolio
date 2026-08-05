@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://felix-keuya-portfolio.vercel.app/</loc><lastmod>2026-08-05</lastmod><priority>1.0</priority></url>
   <url><loc>https://felix-keuya-portfolio.vercel.app/services.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
+  <url><loc>https://felix-keuya-portfolio.vercel.app/engagement.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
+  <url><loc>https://felix-keuya-portfolio.vercel.app/capability.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
   <url><loc>https://felix-keuya-portfolio.vercel.app/work.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
   <url><loc>https://felix-keuya-portfolio.vercel.app/samples.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
   <url><loc>https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html</loc><lastmod>2026-08-05</lastmod><priority>0.9</priority></url>
