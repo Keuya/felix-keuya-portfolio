@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request Analyst Support | Felix Keuya</title>
-<meta name="description" content="Submit a renewable energy project finance, model review, investment memo or market diligence brief to Felix Keuya.">
+<title>Discuss a Renewable Energy Project | Felix Keuya</title>
+<meta name="description" content="Share a renewable energy project finance, model review, investment memo, PPA, wheeling or market diligence brief with Felix Keuya.">
+<meta name="theme-color" content="#091520">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://felix-keuya-portfolio.vercel.app/request.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +14,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="polish.css">
 <link rel="stylesheet" href="visuals.css">
+<link rel="stylesheet" href="conversion.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -31,16 +34,10 @@
 </nav>
 
 <main id="main">
-<header class="page-hero compact visual-page-hero request-visual-hero">
-  <div class="container narrow">
-    <p class="kicker">Project brief</p>
-    <h1>Tell me what needs to be delivered.</h1>
-    <p>Use the form for non-confidential project information. I will confirm fit, scope and timing before requesting sensitive files.</p>
-    <div class="hero-proof-pills" aria-label="Engagement terms">
-      <span>Minimum fixed scope: US$500</span>
-      <span>NDA available</span>
-      <span>Written scope before work starts</span>
-    </div>
+<header class="page-hero compact visual-page-hero">
+  <div class="container request-intro-grid">
+    <div><p class="kicker">Project brief</p><h1>What decision does the work need to support?</h1><p>Share the non-confidential essentials. I will confirm fit, recommend the most efficient scope and only request sensitive files after NDA requirements are agreed.</p></div>
+    <div class="request-credibility" aria-label="Engagement safeguards"><div><strong>Written scope</strong><span>Deliverables, timing and fee confirmed first</span></div><div><strong>NDA available</strong><span>Before confidential project files are exchanged</span></div><div><strong>Clear handover</strong><span>Decision output and action list included</span></div></div>
   </div>
 </header>
 
@@ -49,16 +46,12 @@
     <aside class="form-aside">
       <h2>What happens next</h2>
       <ol class="number-list">
-        <li><span>1</span><div><strong>Fit check</strong><p>I review the brief and confirm whether the assignment is within scope.</p></div></li>
-        <li><span>2</span><div><strong>NDA and clarification</strong><p>Where needed, we sign an NDA and resolve the key scope questions.</p></div></li>
-        <li><span>3</span><div><strong>Written proposal</strong><p>You receive deliverables, timing, fee, payment schedule, assumptions and exclusions.</p></div></li>
-        <li><span>4</span><div><strong>Start</strong><p>Work begins after written approval, required information and the agreed initial payment.</p></div></li>
+        <li><span>1</span><div><strong>Fit check</strong><p>I review the decision, stage, deadline and available evidence.</p></div></li>
+        <li><span>2</span><div><strong>Scope</strong><p>You receive a written proposal with deliverables, fee, timing and exclusions.</p></div></li>
+        <li><span>3</span><div><strong>NDA and files</strong><p>Confidential material is requested only when the engagement is ready to proceed.</p></div></li>
+        <li><span>4</span><div><strong>Delivery</strong><p>The agreed model, memo, pack or research output is reviewed and handed over.</p></div></li>
       </ol>
-      <div class="contact-box">
-        <p>Prefer email?</p>
-        <a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a>
-        <a href="tel:+254797144302">+254 797 144 302</a>
-      </div>
+      <div class="contact-box"><p>Prefer email?</p><a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a><a href="tel:+254797144302">+254 797 144 302</a></div>
     </aside>
 
     <form class="intake-form" action="https://formsubmit.co/felixkeuya@gmail.com" method="POST" enctype="multipart/form-data">
@@ -68,30 +61,24 @@
       <input type="hidden" name="_captcha" value="true">
       <input type="text" name="_honey" class="honey-field" tabindex="-1" autocomplete="off">
 
+      <div class="form-confidence"><div><strong>Keep it brief</strong><span>Only the decision and project context are needed now</span></div><div><strong>No confidential files</strong><span>Use high-level descriptions until scope is agreed</span></div><div><strong>Response by email</strong><span>Fit and next step confirmed directly</span></div></div>
+
       <fieldset>
-        <legend>Your details</legend>
+        <legend>Contact</legend>
         <div class="form-grid two">
-          <label>Full name
-            <input type="text" name="Full name" autocomplete="name" required>
-          </label>
-          <label>Work email
-            <input type="email" name="email" autocomplete="email" required>
-          </label>
-          <label>Organisation
-            <input type="text" name="Organisation" autocomplete="organization" required>
-          </label>
-          <label>Role
-            <input type="text" name="Role" autocomplete="organization-title">
-          </label>
+          <label>Full name<input type="text" name="Full name" autocomplete="name" required></label>
+          <label>Work email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Organisation<input type="text" name="Organisation" autocomplete="organization" required></label>
+          <label>Role <span class="field-optional">Optional</span><input type="text" name="Role" autocomplete="organization-title"></label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Assignment</legend>
+        <legend>The decision</legend>
         <div class="form-grid two">
           <label>Service needed
             <select name="Service needed" id="service-select" required>
-              <option value="">Select a service</option>
+              <option value="">Select the closest fit</option>
               <option>Project opportunity screen</option>
               <option>Financial model review</option>
               <option>Investment memo and lender pack</option>
@@ -99,52 +86,19 @@
               <option>Embedded white label analyst</option>
               <option>Other renewable energy analysis</option>
             </select>
+            <span class="form-service-hint" data-service-hint></span>
           </label>
-          <label>Technology
-            <select name="Technology" required>
-              <option value="">Select technology</option>
-              <option>Solar PV</option>
-              <option>Battery energy storage</option>
-              <option>Solar plus storage</option>
-              <option>C&amp;I or distributed energy</option>
-              <option>Wind</option>
-              <option>Hydro or geothermal</option>
-              <option>Power market or transmission</option>
-              <option>Multiple or other</option>
-            </select>
-          </label>
-          <label>Project country or market
-            <input type="text" name="Project country or market" required>
-          </label>
-          <label>Current stage
-            <select name="Current stage" required>
-              <option value="">Select stage</option>
-              <option>Origination or early screen</option>
-              <option>Pre-feasibility</option>
-              <option>Feasibility or development</option>
-              <option>Financing or lender diligence</option>
-              <option>Investment or acquisition review</option>
-              <option>Construction or operations</option>
-              <option>Strategy or market entry</option>
-            </select>
-          </label>
+          <label>Project country or market<input type="text" name="Project country or market" required></label>
         </div>
-
         <label>What decision or deliverable do you need?
-          <textarea name="Required decision or deliverable" rows="5" placeholder="For example: review an existing solar project finance model, identify material errors, run downside cases and provide a five page lender style memo." required></textarea>
-        </label>
-
-        <label>What information is already available?
-          <textarea name="Information available" rows="4" placeholder="For example: financial model, PPA draft, EPC budget, yield report, tariff data or market research. Do not include confidential details here."></textarea>
+          <textarea name="Required decision or deliverable" rows="5" placeholder="For example: review an existing solar project finance model, identify material issues, run downside cases and prepare a concise lender-style review note." required></textarea>
         </label>
       </fieldset>
 
       <fieldset>
         <legend>Timing and commercial fit</legend>
         <div class="form-grid two">
-          <label>Required by
-            <input type="date" name="Required by" required>
-          </label>
+          <label>Required by<input type="date" name="Required by" required></label>
           <label>Indicative budget
             <select name="Indicative budget" required>
               <option value="">Select a range</option>
@@ -153,61 +107,47 @@
               <option>US$2,500 to US$5,000</option>
               <option>US$5,000 to US$10,000</option>
               <option>Above US$10,000</option>
-              <option>Monthly retainer from US$1,500</option>
-              <option>Not yet set, minimum US$500</option>
-            </select>
-            <small class="minimum-budget-note">Minimum fixed-scope engagement: US$500.</small>
-          </label>
-          <label>Is an NDA required before documents are shared?
-            <select name="NDA required" required>
-              <option value="">Select</option>
-              <option>Yes</option>
-              <option>No</option>
-              <option>To be confirmed</option>
-            </select>
-          </label>
-          <label>How did you find me?
-            <select name="How found">
-              <option value="">Select</option>
-              <option>LinkedIn</option>
-              <option>Referral</option>
-              <option>Google or web search</option>
-              <option>GitHub</option>
-              <option>Existing relationship</option>
-              <option>Other</option>
+              <option>Monthly retainer</option>
+              <option>Not yet set</option>
             </select>
           </label>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Optional non-confidential attachment</legend>
-        <label>Attach a brief
-          <input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx">
-        </label>
-        <p class="field-note">Do not upload confidential contracts, models, personal data or data room material before an NDA and scope are agreed. Maximum recommended file size: 10 MB.</p>
-      </fieldset>
+      <details class="optional-details">
+        <summary>Add project details or a non-confidential brief</summary>
+        <div class="optional-details-inner">
+          <div class="form-grid two">
+            <label>Technology <span class="field-optional">Optional</span>
+              <select name="Technology"><option value="">Select technology</option><option>Solar PV</option><option>Battery energy storage</option><option>Solar plus storage</option><option>C&amp;I or distributed energy</option><option>Wind</option><option>Hydro or geothermal</option><option>Power market or transmission</option><option>Multiple or other</option></select>
+            </label>
+            <label>Current stage <span class="field-optional">Optional</span>
+              <select name="Current stage"><option value="">Select stage</option><option>Origination or early screen</option><option>Pre-feasibility</option><option>Feasibility or development</option><option>Financing or lender diligence</option><option>Investment or acquisition review</option><option>Construction or operations</option><option>Strategy or market entry</option></select>
+            </label>
+            <label>NDA required? <span class="field-optional">Optional</span>
+              <select name="NDA required"><option value="">Select</option><option>Yes</option><option>No</option><option>To be confirmed</option></select>
+            </label>
+            <label>How did you find me? <span class="field-optional">Optional</span>
+              <select name="How found"><option value="">Select</option><option>LinkedIn</option><option>Referral</option><option>Google or web search</option><option>GitHub</option><option>Existing relationship</option><option>Other</option></select>
+            </label>
+          </div>
+          <label>What information is already available? <span class="field-optional">Optional</span>
+            <textarea name="Information available" rows="4" placeholder="Financial model, PPA draft, EPC budget, yield report, tariff data or market research. Keep this high level."></textarea>
+          </label>
+          <label>Attach a non-confidential brief <span class="field-optional">Optional</span><input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"></label>
+          <p class="field-note">Do not upload confidential contracts, financial models, personal data or data-room material before an NDA and written scope are agreed. Maximum recommended file size: 10 MB.</p>
+        </div>
+      </details>
 
-      <label class="consent">
-        <input type="checkbox" name="Consent" value="Agreed" required>
-        <span>I agree that the information submitted may be used to assess and respond to this enquiry. I have not included confidential information that requires an NDA. See the <a href="privacy.html">privacy notice</a>.</span>
-      </label>
-
-      <button class="btn btn-primary submit-button" type="submit">Submit project brief</button>
+      <label class="consent"><input type="checkbox" name="Consent" value="Agreed" required><span>I agree that the information submitted may be used to assess and respond to this enquiry. I have not included confidential information that requires an NDA. See the <a href="privacy.html">privacy notice</a>.</span></label>
+      <button class="btn btn-primary submit-button" type="submit">Send project brief</button>
       <p class="form-note">Submitting this form does not create an engagement. Work begins only after written scope and commercial terms are agreed.</p>
     </form>
   </div>
 </section>
 </main>
-
-<footer>
-  <div class="container footer-grid">
-    <div><a href="index.html" class="footer-logo"><span class="logo-dot"></span>Felix Keuya</a><p>Renewable energy project finance, commercial diligence and white label analyst support.</p></div>
-    <div><p class="footer-heading">Explore</p><a href="services.html">Services</a><a href="work.html">Selected work</a><a href="samples.html">Models &amp; samples</a><a href="resume.html">Resume</a></div>
-    <div><p class="footer-heading">Contact</p><a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a><a href="tel:+254797144302">+254 797 144 302</a><a href="https://www.linkedin.com/in/felix-keuya/" target="_blank" rel="noopener">LinkedIn</a></div>
-  </div>
-  <div class="container footer-bottom"><p>© 2026 Felix Keuya · Nairobi, Kenya</p><a href="privacy.html">Privacy</a></div>
-</footer>
+<footer><div class="container footer-grid"><div><a href="index.html" class="footer-logo"><span class="logo-dot"></span>Felix Keuya</a><p>Renewable energy project finance, commercial diligence and white-label analyst support.</p></div><div><p class="footer-heading">Explore</p><a href="services.html">Services</a><a href="work.html">Selected work</a><a href="samples.html">Models &amp; samples</a><a href="resume.html">Resume</a></div><div><p class="footer-heading">Contact</p><a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a><a href="tel:+254797144302">+254 797 144 302</a><a href="https://www.linkedin.com/in/felix-keuya/" target="_blank" rel="noopener">LinkedIn</a></div></div><div class="container footer-bottom"><p>© 2026 Felix Keuya · Nairobi, Kenya</p><a href="privacy.html">Privacy</a></div></footer>
 <script src="site.js"></script>
+<script src="conversion.js"></script>
 </body>
 </html>
