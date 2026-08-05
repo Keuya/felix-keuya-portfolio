@@ -52,17 +52,55 @@
     else links.insertBefore(samplesLink, links.querySelector(".nav-cta"));
   }
 
+  if (links && !links.querySelector('a[href$="engagement.html"]')) {
+    const engagementLink = document.createElement("a");
+    engagementLink.href = isNestedPage ? "../engagement.html" : "engagement.html";
+    engagementLink.textContent = "Engagement process";
+    const resumeLink = [...links.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
+    if (resumeLink) links.insertBefore(engagementLink, resumeLink);
+    else links.insertBefore(engagementLink, links.querySelector(".nav-cta"));
+  }
+
   document.querySelectorAll(".footer-heading").forEach((heading) => {
     if (heading.textContent.trim() !== "Explore") return;
     const column = heading.parentElement;
-    if (!column || column.querySelector('a[href$="samples.html"]')) return;
-    const samplesLink = document.createElement("a");
-    samplesLink.href = isNestedPage ? "../samples.html" : "samples.html";
-    samplesLink.textContent = "Models & samples";
-    const resumeLink = [...column.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
-    if (resumeLink) column.insertBefore(samplesLink, resumeLink);
-    else column.appendChild(samplesLink);
+    if (!column) return;
+
+    const insertBeforeResume = (newLink) => {
+      const resumeLink = [...column.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
+      if (resumeLink) column.insertBefore(newLink, resumeLink);
+      else column.appendChild(newLink);
+    };
+
+    if (!column.querySelector('a[href$="samples.html"]')) {
+      const samplesLink = document.createElement("a");
+      samplesLink.href = isNestedPage ? "../samples.html" : "samples.html";
+      samplesLink.textContent = "Models & samples";
+      insertBeforeResume(samplesLink);
+    }
+
+    if (!column.querySelector('a[href$="engagement.html"]')) {
+      const engagementLink = document.createElement("a");
+      engagementLink.href = isNestedPage ? "../engagement.html" : "engagement.html";
+      engagementLink.textContent = "Engagement process";
+      insertBeforeResume(engagementLink);
+    }
+
+    if (!column.querySelector('a[href$="capability.html"]')) {
+      const capabilityLink = document.createElement("a");
+      capabilityLink.href = isNestedPage ? "../capability.html" : "capability.html";
+      capabilityLink.textContent = "Capability summary";
+      insertBeforeResume(capabilityLink);
+    }
   });
+
+  const processSection = document.querySelector("#process .container");
+  if (processSection && !processSection.querySelector('a[href$="engagement.html"]')) {
+    const processCta = document.createElement("div");
+    processCta.className = "section-cta";
+    processCta.innerHTML = `<a class="btn btn-dark" href="${isNestedPage ? "../" : ""}engagement.html">See the full engagement and human review process</a>`;
+    processSection.appendChild(processCta);
+  }
 
   const closeMenu = () => {
     if (!button || !links) return;
