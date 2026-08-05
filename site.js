@@ -1,9 +1,11 @@
 (() => {
   const addStylesheet = () => {
-    if (document.querySelector('link[href="polish.css"]')) return;
+    const hasPolishStyles = [...document.querySelectorAll('link[rel="stylesheet"]')]
+      .some((link) => (link.getAttribute("href") || "").split("?")[0].endsWith("polish.css"));
+    if (hasPolishStyles) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "polish.css";
+    link.href = window.location.pathname.includes("/projects/") ? "../polish.css" : "polish.css";
     document.head.appendChild(link);
   };
 
@@ -68,7 +70,7 @@
 
   const path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav-links a").forEach((link) => {
-    const target = (link.getAttribute("href") || "").split("?")[0].split("#")[0];
+    const target = (link.getAttribute("href") || "").split("?")[0].split("#")[0].split("/").pop();
     if (target && target === path) link.setAttribute("aria-current", "page");
   });
 
@@ -154,7 +156,7 @@
   if (consentText && !consentText.querySelector("a")) {
     consentText.append(" See the ");
     const privacyLink = document.createElement("a");
-    privacyLink.href = "privacy.html";
+    privacyLink.href = window.location.pathname.includes("/projects/") ? "../privacy.html" : "privacy.html";
     privacyLink.textContent = "privacy notice";
     consentText.append(privacyLink, ".");
   }
