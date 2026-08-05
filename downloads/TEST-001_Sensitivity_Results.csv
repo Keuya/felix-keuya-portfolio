@@ -1,0 +1,7 @@
+Scenario,Minimum DSCR,Interpretation
+Base case,1.30x,"Limited but usable headroom, subject to resolving model and contract issues"
+Tariff -10%,1.17x,"Revenue downside falls below a prudent lender threshold"
+Energy -8%,1.19x,"Yield and curtailment assumptions require stronger evidence"
+CAPEX +10%,1.20x,"Funding and repayment structure require retesting"
+OPEX +15%,1.26x,"Operating-cost downside reduces headroom"
+Combined downside,1.05x,"Little debt-service buffer remains; case should not proceed unchanged"
