@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Solar IPP Financial Model | Felix Keuya</title>
+<meta name="description" content="View and download Felix Keuya's synthetic public solar IPP project-finance model, including inputs, sources and uses, debt sizing, DSCR, LLCR, cash flow, sensitivities and model checks.">
+<meta name="theme-color" content="#091520">
+<meta property="og:title" content="Public Solar IPP Financial Model | Felix Keuya">
+<meta property="og:description" content="A transparent public project-finance model demonstrating debt sizing, DSCR, LLCR, cash flow, returns, sensitivities and checks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html">
+<link rel="canonical" href="https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,560;1,9..144,340&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../polish.css">
+<link rel="stylesheet" href="../projects.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Felix Keuya Public Solar IPP Financial Model","description":"Synthetic public project-finance model for a 50 MWac / 58.5 MWdc solar IPP, including debt sizing, DSCR, LLCR, returns, sensitivities and integrity checks.","creator":{"@type":"Person","name":"Felix Keuya","url":"https://felix-keuya-portfolio.vercel.app/"},"url":"https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html","license":"https://creativecommons.org/licenses/by-nc-nd/4.0/","dateModified":"2026-08-05","keywords":["solar project finance model","DSCR","LLCR","debt sizing","renewable energy financial model","Africa solar IPP"]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav" aria-label="Main navigation"><div class="nav-inner"><a href="../index.html" class="nav-logo"><span class="logo-dot"></span>Felix Keuya</a><button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button><div class="nav-links" id="nav-links"><a href="../services.html">Services</a><a href="../work.html">Selected work</a><a href="../index.html#process">Process</a><a href="../resume.html">Resume</a><a href="../request.html" class="nav-cta">Request support</a></div></div></nav>
+<main id="main">
+<header class="case-hero model-hero"><div class="container case-hero-grid"><div><nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>›</span><a href="../work.html">Selected work</a><span>›</span><span aria-current="page">Public model</span></nav><p class="kicker">Downloadable public model</p><h1>Solar IPP project-finance model</h1><p class="case-lede">A formula-driven public workbook showing how a utility-scale solar project moves from operating assumptions to funding, debt service, lender ratios, equity cash flow, sensitivities and audit checks.</p><div class="hero-actions"><button class="btn btn-primary" type="button" data-model-download="solar">Download Excel model</button><a class="btn btn-ghost" href="../projects/zambia-solar-project-finance-model.html">Read the project case</a></div></div><aside class="case-status"><span>Public model status</span><strong>Ready for public review</strong><p>Synthetic and anonymised. No client or counterparty names. It is a demonstration of modelling structure, not a lender approval or investment recommendation.</p></aside></div></header>
+
+<section class="case-fact-band"><div class="container case-fact-grid"><div><span>Asset</span><strong>50 MWac / 58.5 MWdc solar PV</strong></div><div><span>Total uses</span><strong>US$58.46m</strong></div><div><span>Senior debt</span><strong>US$39.60m</strong></div><div><span>Project IRR</span><strong>10.63%</strong></div><div><span>Equity IRR</span><strong>16.21%</strong></div><div><span>Minimum DSCR / LLCR</span><strong>1.33x / 1.50x</strong></div></div></section>
+
+<section class="section model-viewer-section"><div class="container">
+<div class="section-heading"><div><p class="index">Model viewer</p><h2>Inspect the workbook before downloading it</h2></div><p>The tables below reproduce the core public outputs. The Excel download contains formulas, scenario controls and all nine sheets.</p></div>
+<div class="model-viewer" data-model-tabs>
+<div class="model-tablist" role="tablist" aria-label="Solar model sheets">
+<button type="button" role="tab" data-model-tab="dashboard">Dashboard</button>
+<button type="button" role="tab" data-model-tab="inputs">Inputs</button>
+<button type="button" role="tab" data-model-tab="funding">Funding</button>
+<button type="button" role="tab" data-model-tab="debt">Debt</button>
+<button type="button" role="tab" data-model-tab="sensitivities">Sensitivities</button>
+<button type="button" role="tab" data-model-tab="checks">Checks</button>
+</div>
+
+<div class="model-panel" data-model-panel="dashboard">
+<div class="model-kpi-grid">
+<div><span>Project IRR</span><strong>10.63%</strong><small>10.00% public hurdle</small></div>
+<div><span>Equity IRR</span><strong>16.21%</strong><small>15.00% public hurdle</small></div>
+<div><span>Minimum DSCR</span><strong>1.33x</strong><small>1.30x target</small></div>
+<div><span>Minimum LLCR</span><strong>1.50x</strong><small>1.25x floor</small></div>
+</div>
+<div class="model-preview-grid">
+<div class="model-card"><p class="card-tag">Debt-service profile</p><h3>Coverage remains above the base threshold</h3>
+<div class="metric-bars">
+<div><span>Year 1</span><i style="--bar:96%"></i><strong>2.88x</strong></div>
+<div><span>Year 3</span><i style="--bar:54%"></i><strong>1.62x</strong></div>
+<div><span>Year 6</span><i style="--bar:44%"></i><strong>1.33x</strong></div>
+<div><span>Year 10</span><i style="--bar:45%"></i><strong>1.34x</strong></div>
+<div><span>Year 15</span><i style="--bar:45%"></i><strong>1.36x</strong></div>
+</div></div>
+<div class="model-card"><p class="card-tag">Finance interpretation</p><h3>Debt is constrained by the agreed leverage cap</h3><dl class="model-definition-list"><div><dt>Cost-cap debt</dt><dd>US$39.60m</dd></div><div><dt>DSCR capacity</dt><dd>US$50.14m</dd></div><div><dt>Selected debt basis</dt><dd>Cost cap</dd></div><div><dt>Debt / total uses</dt><dd>67.7%</dd></div></dl></div>
+</div>
+</div>
+
+<div class="model-panel" data-model-panel="inputs" hidden>
+<div class="model-note"><strong>Input discipline:</strong> editable assumptions are separated from calculations and each public assumption has a source or limitation note.</div>
+<div class="table-scroll"><table class="case-table"><thead><tr><th>Section</th><th>Assumption</th><th>Base case</th><th>Unit</th></tr></thead><tbody>
+<tr><td>Energy</td><td>P90 Year 1 gross generation</td><td>124,780</td><td>MWh</td></tr>
+<tr><td>Energy</td><td>Degradation / availability / losses / curtailment</td><td>0.5% / 98.5% / 1.5% / 1.0%</td><td>Annual / operating</td></tr>
+<tr><td>Revenue</td><td>PPA tariff and escalation</td><td>US$0.070 / 1.5%</td><td>per kWh / p.a.</td></tr>
+<tr><td>CAPEX</td><td>EPC, grid, development and contingency</td><td>US$56.58m</td><td>Base uses</td></tr>
+<tr><td>Debt</td><td>Cap / interest / tenor / grace</td><td>70% / 6.5% / 15 years / 2 years</td><td>Senior debt</td></tr>
+<tr><td>Credit</td><td>Target DSCR / LLCR / DSRA</td><td>1.30x / 1.25x / 6 months</td><td>Lender metrics</td></tr>
+<tr><td>Tax</td><td>Tax rate / holiday / depreciation</td><td>30% / 5 years / 20 years</td><td>Public placeholders</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="model-panel" data-model-panel="funding" hidden>
+<div class="split-tables"><div><h3>Uses</h3><table class="case-table compact"><tbody><tr><th>EPC cost</th><td>US$50.00m</td></tr><tr><th>Grid connection</th><td>US$1.50m</td></tr><tr><th>Development cost</th><td>US$2.50m</td></tr><tr><th>Contingency</th><td>US$2.58m</td></tr><tr><th>Financing fee</th><td>US$0.59m</td></tr><tr><th>Initial DSRA</th><td>US$1.29m</td></tr><tr class="total"><th>Total uses</th><td>US$58.46m</td></tr></tbody></table></div>
+<div><h3>Sources</h3><table class="case-table compact"><tbody><tr><th>Senior debt</th><td>US$39.60m</td></tr><tr><th>Equity requirement</th><td>US$18.85m</td></tr><tr><th>Debt / base uses</th><td>70.0%</td></tr><tr><th>Debt / total uses</th><td>67.7%</td></tr><tr><th>Funding surplus / gap</th><td>US$0</td></tr><tr class="total"><th>Sources equal uses</th><td>PASS</td></tr></tbody></table></div></div>
+</div>
+
+<div class="model-panel" data-model-panel="debt" hidden>
+<div class="table-scroll"><table class="case-table"><thead><tr><th>Year</th><th>Opening debt</th><th>Interest</th><th>Principal</th><th>Debt service</th><th>CFADS</th><th>DSCR</th><th>LLCR</th></tr></thead><tbody>
+<tr><td>1</td><td>US$39.60m</td><td>US$2.57m</td><td>—</td><td>US$2.57m</td><td>US$7.43m</td><td>2.88x</td><td>1.60x</td></tr>
+<tr><td>3</td><td>US$39.60m</td><td>US$2.57m</td><td>US$2.03m</td><td>US$4.61m</td><td>US$7.47m</td><td>1.62x</td><td>1.50x</td></tr>
+<tr><td>6</td><td>US$33.11m</td><td>US$2.15m</td><td>US$2.45m</td><td>US$4.61m</td><td>US$6.12m</td><td>1.33x</td><td>1.69x</td></tr>
+<tr><td>10</td><td>US$22.29m</td><td>US$1.45m</td><td>US$3.16m</td><td>US$4.61m</td><td>US$6.18m</td><td>1.34x</td><td>2.53x</td></tr>
+<tr><td>15</td><td>US$4.32m</td><td>US$0.28m</td><td>US$4.32m</td><td>US$4.61m</td><td>US$6.25m</td><td>1.36x</td><td>11.22x</td></tr>
+</tbody></table></div>
+<p class="model-footnote">The public model uses an interest-only grace period followed by level annual debt service. A live mandate can replace this with repayment sculpting, cash sweeps, multiple facilities, construction-period debt and covenant-specific distribution tests.</p>
+</div>
+
+<div class="model-panel" data-model-panel="sensitivities" hidden>
+<div class="table-scroll"><table class="case-table sensitivity-table"><thead><tr><th>Scenario</th><th>Project IRR</th><th>Equity IRR</th><th>Minimum DSCR</th><th>Interpretation</th></tr></thead><tbody>
+<tr><td>Base</td><td>11.12%</td><td>17.65%</td><td>1.36x</td><td>Passes public hurdles</td></tr>
+<tr><td>Tariff -10%</td><td>9.61%</td><td>13.58%</td><td class="warn">1.23x</td><td>Coverage falls below target</td></tr>
+<tr><td>Yield -10%</td><td>9.61%</td><td>13.58%</td><td class="warn">1.23x</td><td>Same revenue effect in this simplified case</td></tr>
+<tr><td>CAPEX +10%</td><td>9.93%</td><td>14.39%</td><td class="warn">1.26x</td><td>Returns and headroom weaken</td></tr>
+<tr><td>Interest +200 bps</td><td>11.03%</td><td>14.33%</td><td class="warn">1.22x</td><td>Debt service becomes binding</td></tr>
+<tr class="downside"><td>Combined downside</td><td>7.25%</td><td>6.46%</td><td>1.22x</td><td>Requires re-pricing or re-structuring</td></tr>
+<tr><td>Upside</td><td>14.25%</td><td>29.33%</td><td>1.74x</td><td>Strong equity and lender headroom</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="model-panel" data-model-panel="checks" hidden>
+<div class="check-grid">
+<div><span>Sources equal uses</span><strong>PASS</strong></div><div><span>Debt repaid by maturity</span><strong>PASS</strong></div><div><span>Debt within cost cap</span><strong>PASS</strong></div><div><span>Debt within DSCR capacity</span><strong>PASS</strong></div><div><span>Minimum DSCR</span><strong>PASS</strong></div><div><span>Minimum LLCR</span><strong>PASS</strong></div><div><span>No negative debt balance</span><strong>PASS</strong></div><div><span>No client names</span><strong>PASS</strong></div>
+</div>
+<div class="model-status"><span>Overall model status</span><strong>READY FOR PUBLIC REVIEW</strong></div>
+</div>
+</div>
+</div></section>
+
+<section class="section section-alt"><div class="container">
+<div class="section-heading"><div><p class="index">Workbook architecture</p><h2>Nine linked sheets with a clear review path</h2></div><p>The workbook is deliberately compact enough to inspect while retaining the main mechanics expected in a project-finance review.</p></div>
+<div class="architecture-grid">
+<article><span>01</span><h3>Cover</h3><p>Purpose, scope, limitations and colour convention.</p></article>
+<article><span>02</span><h3>Dashboard</h3><p>Investment, debt and model-status outputs.</p></article>
+<article><span>03</span><h3>Inputs</h3><p>Separated technical, commercial, cost, debt, tax and scenario assumptions.</p></article>
+<article><span>04</span><h3>Operations</h3><p>Generation, losses, degradation, revenue and OPEX.</p></article>
+<article><span>05</span><h3>Funding</h3><p>Sources and uses, financing fees, DSRA and debt-cap selection.</p></article>
+<article><span>06</span><h3>Debt</h3><p>Opening balance, interest, principal, DSCR, LLCR and lock-up.</p></article>
+<article><span>07</span><h3>Cashflow</h3><p>CFADS, reserve movement, distributions, IRR and NPV.</p></article>
+<article><span>08</span><h3>Sensitivities</h3><p>Tariff, yield, CAPEX, interest and combined cases.</p></article>
+<article><span>09</span><h3>Checks</h3><p>Funding, debt, covenant and public-disclosure integrity tests.</p></article>
+</div></div></section>
+
+<section class="section"><div class="container two-col"><div class="col-head"><p class="index">Live mandate</p><h2>What changes when this is built for an actual transaction</h2></div><div class="prose"><ul class="check-list large"><li>Verified energy study with P50, P75, P90 and, where required, P99 cases.</li><li>Monthly construction schedule, drawdown, IDC, commitment fees and construction contingencies.</li><li>Jurisdiction-specific tax, VAT, duties, incentives, loss carryforwards and withholding taxes.</li><li>Contract-specific tariff, indexation, curtailment, deemed energy, payment delay and termination treatment.</li><li>Sculpted repayment, cash sweep, reserve waterfalls, lock-up and default covenants.</li><li>FX, inflation, interest-rate, refinancing and distribution scenarios.</li><li>Documented model audit trail, issue register and lender or investment-committee memo.</li></ul></div></div></section>
+
+<section class="section section-alt"><div class="container"><div class="download-band"><div><p class="kicker">Public Excel file</p><h2>Review formulas, links and sensitivities directly</h2><p>The workbook is synthetic and may be used to assess modelling approach. It should not be relied on for an investment or lending decision.</p></div><div><button type="button" class="btn btn-dark" data-model-download="solar">Download the Excel workbook</button><small>.xlsx · approximately 44 KB</small></div></div></div></section>
+
+<section class="cta-band"><div class="container cta-grid"><div><p class="kicker">Model build or review</p><h2>Need the same structure applied to a live solar, wind or storage project?</h2><p>Send the current model, project stage, required decision and deadline. Confidential files are exchanged only after scope and NDA confirmation.</p></div><div class="cta-actions"><a class="btn btn-primary" href="../request.html?service=Financial%20model%20review">Request model support</a></div></div></section>
+</main>
+<footer><div class="container footer-grid"><div><a href="../index.html" class="footer-logo"><span class="logo-dot"></span>Felix Keuya</a><p>Renewable energy project finance, commercial diligence and white label analyst support.</p></div><div><p class="footer-heading">Explore</p><a href="../services.html">Services</a><a href="../work.html">Selected work</a><a href="../resume.html">Resume</a></div><div><p class="footer-heading">Contact</p><a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a><a href="tel:+254797144302">+254 797 144 302</a><a href="https://www.linkedin.com/in/felix-keuya/" target="_blank" rel="noopener">LinkedIn</a></div></div><div class="container footer-bottom"><p>© 2026 Felix Keuya · Nairobi, Kenya</p><a href="../privacy.html">Privacy</a></div></footer>
+<script src="../site.js"></script>
+<script src="../model-downloads.js"></script>
+</body>
+</html>
