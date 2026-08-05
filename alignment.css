@@ -1,0 +1,261 @@
+/* Site-wide layout alignment and spacing refinement */
+:root{
+  --site-max:1220px;
+  --site-gutter:clamp(20px,4vw,48px);
+  --section-space:clamp(72px,8vw,108px);
+  --card-radius:2px;
+}
+
+.container,
+.nav-inner{
+  width:min(calc(100% - (var(--site-gutter) * 2)),var(--site-max));
+  margin-inline:auto;
+}
+
+.section{
+  padding-block:var(--section-space);
+}
+
+.page-hero>.container,
+.client-hero>.container,
+.energy-band>.container,
+.cta-band>.container{
+  width:min(calc(100% - (var(--site-gutter) * 2)),var(--site-max));
+}
+
+.client-section-heading,
+.section-heading{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,420px);
+  gap:clamp(28px,5vw,64px);
+  align-items:end;
+  margin-bottom:clamp(30px,4vw,48px);
+}
+
+.client-section-heading>div,
+.section-heading>div{
+  min-width:0;
+}
+
+.client-section-heading h2,
+.section-heading h2{
+  margin-bottom:0;
+  max-width:820px;
+  text-wrap:balance;
+}
+
+.client-section-heading>p,
+.section-heading>p{
+  margin:0;
+  max-width:420px;
+  justify-self:end;
+}
+
+.hero-actions,
+.cta-actions{
+  align-items:center;
+}
+
+.hero-actions .btn,
+.cta-actions .btn,
+.pricing-card .btn,
+.engagement-card .btn,
+.sample-card .btn{
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.energy-case-grid,
+.pricing-grid,
+.engagement-grid,
+.client-problem-grid,
+.sample-grid,
+.case-index-grid,
+.process-short,
+.standards-grid{
+  align-items:stretch;
+}
+
+.energy-case-card,
+.pricing-card,
+.engagement-card,
+.client-problem,
+.sample-card,
+.case-index-card,
+.process-short article,
+.standards-grid article{
+  height:100%;
+  border-radius:var(--card-radius);
+}
+
+.energy-case-body,
+.sample-card,
+.case-index-card,
+.engagement-card,
+.pricing-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.energy-case-body .project-link,
+.sample-card .project-link,
+.sample-card .btn,
+.case-index-card .project-link,
+.engagement-card .btn,
+.pricing-card .btn{
+  margin-top:auto;
+}
+
+.energy-case-body h3,
+.sample-card h2,
+.sample-card h3,
+.case-index-card h2,
+.engagement-card h3,
+.pricing-card h3,
+.client-problem h3{
+  text-wrap:balance;
+}
+
+.energy-case-body>p,
+.sample-card>p,
+.case-index-card>p,
+.engagement-card>p,
+.pricing-card>p,
+.client-problem>p{
+  max-width:64ch;
+}
+
+.energy-case-media,
+.services-hero-media,
+.sample-visual{
+  isolation:isolate;
+}
+
+.energy-case-media img,
+.services-hero-media img,
+.energy-band img,
+.client-hero-media img{
+  display:block;
+}
+
+.client-hero-grid,
+.services-hero-grid,
+.sample-hero-grid,
+.work-hero-grid,
+.request-intro-grid,
+.form-layout,
+.case-layout{
+  align-items:center;
+}
+
+.request-intro-grid,
+.form-layout{
+  column-gap:clamp(36px,6vw,76px);
+}
+
+.form-aside{
+  align-self:start;
+}
+
+.intake-form fieldset,
+.optional-details,
+.contact-box,
+.form-confidence,
+.request-credibility{
+  width:100%;
+}
+
+.form-grid.two{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:start;
+}
+
+.intake-form label,
+.intake-form select,
+.intake-form input,
+.intake-form textarea{
+  width:100%;
+}
+
+.proof-links,
+.capability-accordion{
+  width:100%;
+}
+
+.capability-content{
+  align-items:start;
+}
+
+.case-main,
+.prose{
+  max-width:78ch;
+}
+
+.case-sidebar{
+  align-self:start;
+}
+
+footer .footer-grid{
+  align-items:start;
+}
+
+@media(max-width:1000px){
+  .client-section-heading,
+  .section-heading{
+    grid-template-columns:1fr;
+    gap:16px;
+    align-items:start;
+  }
+
+  .client-section-heading>p,
+  .section-heading>p{
+    justify-self:start;
+    max-width:720px;
+  }
+
+  .client-hero-grid,
+  .services-hero-grid,
+  .sample-hero-grid,
+  .work-hero-grid,
+  .request-intro-grid,
+  .form-layout,
+  .case-layout{
+    align-items:start;
+  }
+}
+
+@media(max-width:760px){
+  :root{
+    --site-gutter:20px;
+    --section-space:64px;
+  }
+
+  .form-grid.two,
+  .capability-content,
+  .decision-output-grid,
+  .request-credibility,
+  .form-confidence{
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions,
+  .cta-actions{
+    width:100%;
+  }
+
+  .hero-actions .btn,
+  .cta-actions .btn{
+    width:100%;
+  }
+
+  .pricing-card.featured{
+    transform:none;
+  }
+
+  .energy-case-media,
+  .services-hero-media img{
+    height:230px;
+  }
+}
