@@ -1,12 +1,17 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const partPaths = [1, 2, 3, 4, 5].map((part) =>
-  path.join(process.cwd(), "api", "photo-parts", `part${part}.txt`)
-);
+const readPart = (filename) =>
+  fs.readFileSync(path.join(process.cwd(), "api", "photo-parts", filename), "utf8").trim();
 
 const imageBuffer = Buffer.from(
-  partPaths.map((filePath) => fs.readFileSync(filePath, "utf8").trim()).join(""),
+  [
+    readPart("part1.txt"),
+    readPart("part2.txt"),
+    readPart("part3.txt"),
+    readPart("part4.txt"),
+    readPart("part5.txt")
+  ].join(""),
   "base64"
 );
 
