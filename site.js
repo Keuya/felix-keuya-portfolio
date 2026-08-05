@@ -22,6 +22,7 @@
 
   ensureStylesheet("polish.css");
   ensureStylesheet("visuals.css");
+  ensureStylesheet("alignment.css");
   ensureMeta('meta[name="theme-color"]', { name: "theme-color", content: "#091520" });
   ensureMeta('meta[name="referrer"]', { name: "referrer", content: "strict-origin-when-cross-origin" });
   ensureMeta('meta[property="og:image"]', { property: "og:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
@@ -195,4 +196,40 @@
 
   const formNote = document.querySelector(".intake-form .form-note");
   if (formNote) formNote.textContent = "Submitting this form does not create an engagement. Work begins only after written scope and commercial terms are agreed.";
+
+  const voiceReplacements = [
+    [/\bI help\b/g, "Felix helps"],
+    [/\bI support\b/g, "Felix supports"],
+    [/\bI review\b/g, "Felix reviews"],
+    [/\bI work\b/g, "Felix works"],
+    [/\bI provide\b/g, "Felix provides"],
+    [/\bI assess\b/g, "Felix assesses"],
+    [/\bI analyse\b/g, "Felix analyses"],
+    [/\bI prepare\b/g, "Felix prepares"],
+    [/\bI produce\b/g, "Felix produces"],
+    [/\bI conduct\b/g, "Felix conducts"],
+    [/\bI develop\b/g, "Felix develops"],
+    [/\bI build\b/g, "Felix builds"],
+    [/\bI deliver\b/g, "Felix delivers"],
+    [/\bI will confirm\b/g, "Felix will confirm"],
+    [/\bI will review\b/g, "Felix will review"],
+    [/\bI will recommend\b/g, "Felix will recommend"],
+    [/\bI will request\b/g, "Felix will request"],
+    [/\bI can support\b/g, "Felix can support"],
+    [/\bmy work\b/gi, "the work"],
+    [/\bmy analysis\b/gi, "the analysis"]
+  ];
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+  textNodes.forEach((node) => {
+    const parent = node.parentElement;
+    if (!parent || parent.closest("script, style, textarea, input, select, option, .consent, [contenteditable='true']")) return;
+    let updated = node.nodeValue;
+    voiceReplacements.forEach(([pattern, replacement]) => {
+      updated = updated.replace(pattern, replacement);
+    });
+    if (updated !== node.nodeValue) node.nodeValue = updated;
+  });
 })();
