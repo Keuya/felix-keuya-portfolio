@@ -1,13 +1,13 @@
 (() => {
   const isNestedPage = window.location.pathname.includes("/projects/") || window.location.pathname.includes("/models/");
 
-  const addStylesheet = () => {
-    const hasPolishStyles = [...document.querySelectorAll('link[rel="stylesheet"]')]
-      .some((link) => (link.getAttribute("href") || "").split("?")[0].endsWith("polish.css"));
-    if (hasPolishStyles) return;
+  const ensureStylesheet = (filename) => {
+    const hasStylesheet = [...document.querySelectorAll('link[rel="stylesheet"]')]
+      .some((link) => (link.getAttribute("href") || "").split("?")[0].endsWith(filename));
+    if (hasStylesheet) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = isNestedPage ? "../polish.css" : "polish.css";
+    link.href = isNestedPage ? `../${filename}` : filename;
     document.head.appendChild(link);
   };
 
@@ -20,7 +20,8 @@
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
   };
 
-  addStylesheet();
+  ensureStylesheet("polish.css");
+  ensureStylesheet("visuals.css");
   ensureMeta('meta[name="theme-color"]', { name: "theme-color", content: "#091520" });
   ensureMeta('meta[name="referrer"]', { name: "referrer", content: "strict-origin-when-cross-origin" });
   ensureMeta('meta[property="og:image"]', {
@@ -48,6 +49,18 @@
     if (resumeLink) links.insertBefore(samplesLink, resumeLink);
     else links.insertBefore(samplesLink, links.querySelector(".nav-cta"));
   }
+
+  document.querySelectorAll(".footer-heading").forEach((heading) => {
+    if (heading.textContent.trim() !== "Explore") return;
+    const column = heading.parentElement;
+    if (!column || column.querySelector('a[href$="samples.html"]')) return;
+    const samplesLink = document.createElement("a");
+    samplesLink.href = isNestedPage ? "../samples.html" : "samples.html";
+    samplesLink.textContent = "Models & samples";
+    const resumeLink = [...column.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
+    if (resumeLink) column.insertBefore(samplesLink, resumeLink);
+    else column.appendChild(samplesLink);
+  });
 
   const closeMenu = () => {
     if (!button || !links) return;
@@ -132,6 +145,24 @@
       .toISOString()
       .split("T")[0];
   }
+
+  const budgetSelect = document.querySelector('select[name="Indicative budget"]');
+  if (budgetSelect) {
+    [...budgetSelect.options].forEach((option) => {
+      if (/under\s+us\$?500/i.test(option.textContent)) option.remove();
+    });
+    const label = budgetSelect.closest("label");
+    if (label && !label.querySelector(".minimum-budget-note")) {
+      const note = document.createElement("small");
+      note.className = "minimum-budget-note";
+      note.textContent = "Minimum fixed-scope engagement: US$500.";
+      label.appendChild(note);
+    }
+  }
+
+  document.querySelectorAll(".service-price, .price-block strong").forEach((element) => {
+    if (element.textContent.trim() === "From US$350") element.textContent = "From US$500";
+  });
 
   const portrait = document.querySelector(".portrait");
   const portraitImage = portrait?.querySelector("img");
