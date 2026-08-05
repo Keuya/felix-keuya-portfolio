@@ -40,6 +40,15 @@
   const button = document.querySelector(".menu-button");
   const links = document.querySelector(".nav-links");
 
+  if (links && !links.querySelector('a[href$="samples.html"]')) {
+    const samplesLink = document.createElement("a");
+    samplesLink.href = isNestedPage ? "../samples.html" : "samples.html";
+    samplesLink.textContent = "Models & samples";
+    const resumeLink = [...links.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
+    if (resumeLink) links.insertBefore(samplesLink, resumeLink);
+    else links.insertBefore(samplesLink, links.querySelector(".nav-cta"));
+  }
+
   const closeMenu = () => {
     if (!button || !links) return;
     button.setAttribute("aria-expanded", "false");
@@ -75,6 +84,16 @@
     const target = (link.getAttribute("href") || "").split("?")[0].split("#")[0].split("/").pop();
     if (target && target === path) link.setAttribute("aria-current", "page");
   });
+
+  if (path === "work.html") {
+    const grid = document.querySelector(".case-index-grid");
+    if (grid && !grid.querySelector('a[href="projects/rec-readiness-commercial-model.html"]')) {
+      const card = document.createElement("article");
+      card.className = "case-index-card reveal";
+      card.innerHTML = '<p class="card-tag">REC readiness · Synthetic public case</p><h2>500 kW REC readiness and commercial model</h2><p>Environmental-attribute rights, meter and data controls, generation reconciliation, REC scenarios and lender treatment.</p><dl class="mini-metrics"><div><dt>Readiness</dt><dd>67% · Conditional</dd></div><div><dt>Minimum DSCR</dt><dd>1.23x</dd></div></dl><a class="project-link" href="projects/rec-readiness-commercial-model.html">Read the full case study →</a>';
+      grid.appendChild(card);
+    }
+  }
 
   const io = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
