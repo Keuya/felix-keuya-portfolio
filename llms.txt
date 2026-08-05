@@ -11,12 +11,17 @@ Felix Keuya provides fixed-scope and white-label analyst support to renewable en
 - African power-market and project-development diligence
 - Embedded white-label analyst support
 
-## Selected project case studies
-- https://felix-keuya-portfolio.vercel.app/projects/zambia-solar-project-finance-model.html
-- https://felix-keuya-portfolio.vercel.app/projects/south-africa-corporate-ppa-wheeling.html
-- https://felix-keuya-portfolio.vercel.app/projects/grid-connection-curtailment-analysis.html
-- https://felix-keuya-portfolio.vercel.app/projects/investment-committee-memo-project-valuation.html
-- https://felix-keuya-portfolio.vercel.app/projects/africa-renewable-project-development-portfolio.html
+## Public financial model library
+The following synthetic Excel models can be inspected online and downloaded. They do not contain confidential client information.
+- Solar IPP project-finance model: https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html
+- South Africa corporate PPA and wheeling model: https://felix-keuya-portfolio.vercel.app/models/sa-corporate-ppa-wheeling-model.html
+
+## Detailed project case studies
+- Zambia solar IPP financial model and lender review: https://felix-keuya-portfolio.vercel.app/projects/zambia-solar-project-finance-model.html
+- South Africa corporate PPA and wheeling commercial case: https://felix-keuya-portfolio.vercel.app/projects/south-africa-corporate-ppa-wheeling.html
+- Grid connection and curtailment risk analysis: https://felix-keuya-portfolio.vercel.app/projects/grid-connection-curtailment-analysis.html
+- Investment committee memo and solar-plus-BESS valuation: https://felix-keuya-portfolio.vercel.app/projects/investment-committee-memo-project-valuation.html
+- Zambia, DRC and wider African renewable project portfolio: https://felix-keuya-portfolio.vercel.app/projects/africa-renewable-project-development-portfolio.html
 
 ## Main pages
 - https://felix-keuya-portfolio.vercel.app/
