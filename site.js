@@ -24,19 +24,10 @@
   ensureStylesheet("visuals.css");
   ensureMeta('meta[name="theme-color"]', { name: "theme-color", content: "#091520" });
   ensureMeta('meta[name="referrer"]', { name: "referrer", content: "strict-origin-when-cross-origin" });
-  ensureMeta('meta[property="og:image"]', {
-    property: "og:image",
-    content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg"
-  });
-  ensureMeta('meta[property="og:image:alt"]', {
-    property: "og:image:alt",
-    content: "Felix Keuya, renewable energy and project finance analyst"
-  });
+  ensureMeta('meta[property="og:image"]', { property: "og:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
+  ensureMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: "Felix Keuya, renewable energy and project finance analyst" });
   ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary" });
-  ensureMeta('meta[name="twitter:image"]', {
-    name: "twitter:image",
-    content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg"
-  });
+  ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
 
   const button = document.querySelector(".menu-button");
   const links = document.querySelector(".nav-links");
@@ -76,16 +67,13 @@
       links.classList.toggle("open", willOpen);
       document.body.classList.toggle("menu-open", willOpen);
     });
-
     links.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
-
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         closeMenu();
         button.focus();
       }
     });
-
     document.addEventListener("click", (event) => {
       if (!links.classList.contains("open")) return;
       if (!links.contains(event.target) && !button.contains(event.target)) closeMenu();
@@ -141,9 +129,7 @@
   const deadline = document.querySelector('input[name="Required by"]');
   if (deadline) {
     const today = new Date();
-    deadline.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
-      .toISOString()
-      .split("T")[0];
+    deadline.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
   }
 
   const budgetSelect = document.querySelector('select[name="Indicative budget"]');
@@ -151,13 +137,6 @@
     [...budgetSelect.options].forEach((option) => {
       if (/under\s+us\$?500/i.test(option.textContent)) option.remove();
     });
-    const label = budgetSelect.closest("label");
-    if (label && !label.querySelector(".minimum-budget-note")) {
-      const note = document.createElement("small");
-      note.className = "minimum-budget-note";
-      note.textContent = "Minimum fixed-scope engagement: US$500.";
-      label.appendChild(note);
-    }
   }
 
   document.querySelectorAll(".service-price, .price-block strong").forEach((element) => {
@@ -171,7 +150,6 @@
     portraitImage.alt = "Felix Keuya, renewable energy and project finance analyst";
     portraitImage.decoding = "async";
     portraitImage.fetchPriority = "high";
-
     if (!portrait.querySelector(".portrait-fallback")) {
       const fallback = document.createElement("span");
       fallback.className = "portrait-fallback";
@@ -179,7 +157,6 @@
       fallback.textContent = "FK";
       portrait.appendChild(fallback);
     }
-
     const markReady = () => portrait.classList.add("image-ready");
     portraitImage.addEventListener("load", markReady);
     portraitImage.addEventListener("error", () => portrait.classList.add("image-error"));
@@ -187,9 +164,7 @@
   }
 
   const caption = document.querySelector(".portrait-caption");
-  if (caption) {
-    caption.innerHTML = "Felix Keuya<span>Renewable Energy and Project Finance Analyst</span>";
-  }
+  if (caption) caption.innerHTML = "Felix Keuya<span>Renewable Energy and Project Finance Analyst</span>";
 
   const stats = document.querySelectorAll(".hero-stats .stat");
   if (stats.length >= 4) {
@@ -207,9 +182,7 @@
   });
 
   const fileNote = document.querySelector('input[type="file"]')?.closest("fieldset")?.querySelector(".field-note");
-  if (fileNote && !fileNote.textContent.includes("10 MB")) {
-    fileNote.textContent += " Maximum recommended file size: 10 MB.";
-  }
+  if (fileNote && !fileNote.textContent.includes("10 MB")) fileNote.textContent += " Maximum recommended file size: 10 MB.";
 
   const consentText = document.querySelector(".consent span");
   if (consentText && !consentText.querySelector("a")) {
@@ -221,7 +194,5 @@
   }
 
   const formNote = document.querySelector(".intake-form .form-note");
-  if (formNote) {
-    formNote.textContent = "Submitting this form does not create an engagement. Work begins only after written scope and commercial terms are agreed.";
-  }
+  if (formNote) formNote.textContent = "Submitting this form does not create an engagement. Work begins only after written scope and commercial terms are agreed.";
 })();
