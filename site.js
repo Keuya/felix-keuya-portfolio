@@ -20,6 +20,15 @@
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
   };
 
+  const ensureLink = (selector, attributes) => {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement("link");
+      document.head.appendChild(element);
+    }
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+  };
+
   ensureStylesheet("polish.css");
   ensureStylesheet("visuals.css");
   ensureStylesheet("alignment.css");
@@ -27,8 +36,9 @@
   ensureMeta('meta[name="referrer"]', { name: "referrer", content: "strict-origin-when-cross-origin" });
   ensureMeta('meta[property="og:image"]', { property: "og:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
   ensureMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: "Felix Keuya, renewable energy and project finance analyst" });
-  ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary" });
+  ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
   ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
+  ensureLink('link[rel="icon"]', { rel: "icon", type: "image/svg+xml", href: isNestedPage ? "../favicon.svg" : "favicon.svg" });
 
   const button = document.querySelector(".menu-button");
   const links = document.querySelector(".nav-links");
@@ -197,6 +207,26 @@
   const formNote = document.querySelector(".intake-form .form-note");
   if (formNote) formNote.textContent = "Submitting this form does not create an engagement. Work begins only after written scope and commercial terms are agreed.";
 
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    const address = (link.getAttribute("href") || "").split("?")[0];
+    link.setAttribute("href", `${address}?subject=Renewable%20energy%20project%20enquiry`);
+    link.textContent = "Email Felix";
+    link.setAttribute("aria-label", "Email Felix");
+    link.setAttribute("title", "Open your email application");
+  });
+
+  document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
+    link.textContent = "Call Felix";
+    link.setAttribute("aria-label", "Call Felix");
+    link.setAttribute("title", "Open your telephone dialler");
+  });
+
+  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+    const rel = new Set((link.getAttribute("rel") || "").split(/\s+/).filter(Boolean));
+    rel.add("noopener");
+    link.setAttribute("rel", [...rel].join(" "));
+  });
+
   const voiceReplacements = [
     [/\bI help\b/g, "Felix helps"],
     [/\bI support\b/g, "Felix supports"],
@@ -216,6 +246,9 @@
     [/\bI will recommend\b/g, "Felix will recommend"],
     [/\bI will request\b/g, "Felix will request"],
     [/\bI can support\b/g, "Felix can support"],
+    [/\bWhen clients bring me in\b/g, "When clients engage Felix"],
+    [/\bTell me the decision\b/g, "Share the decision"],
+    [/\bHow did you find me\b/g, "How did you find Felix"],
     [/\bmy work\b/gi, "the work"],
     [/\bmy analysis\b/gi, "the analysis"]
   ];
