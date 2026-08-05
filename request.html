@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Analyst Support | Felix Keuya</title>
+<meta name="description" content="Submit a renewable energy project finance, model review, investment memo or market diligence brief to Felix Keuya.">
+<link rel="canonical" href="https://felix-keuya-portfolio.vercel.app/request.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,560;1,9..144,340&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav id="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-dot"></span>Felix Keuya</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div class="nav-links" id="nav-links">
+      <a href="services.html">Services</a>
+      <a href="work.html">Selected work</a>
+      <a href="index.html#process">Process</a>
+      <a href="resume.html">Resume</a>
+      <a href="request.html" class="nav-cta" aria-current="page">Request support</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<header class="page-hero compact">
+  <div class="container narrow">
+    <p class="kicker">Project brief</p>
+    <h1>Tell me what needs to be delivered.</h1>
+    <p>Use the form for non-confidential project information. I will confirm fit, scope and timing before requesting sensitive files.</p>
+  </div>
+</header>
+
+<section class="section form-section">
+  <div class="container form-layout">
+    <aside class="form-aside">
+      <h2>What happens next</h2>
+      <ol class="number-list">
+        <li><span>1</span><div><strong>Fit check</strong><p>I review the brief and confirm whether the assignment is within scope.</p></div></li>
+        <li><span>2</span><div><strong>NDA and clarification</strong><p>Where needed, we sign an NDA and resolve the key scope questions.</p></div></li>
+        <li><span>3</span><div><strong>Written proposal</strong><p>You receive deliverables, timing, fee, payment schedule, assumptions and exclusions.</p></div></li>
+        <li><span>4</span><div><strong>Start</strong><p>Work begins after written approval, required information and the agreed initial payment.</p></div></li>
+      </ol>
+      <div class="contact-box">
+        <p>Prefer email?</p>
+        <a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a>
+        <a href="tel:+254797144302">+254 797 144 302</a>
+      </div>
+    </aside>
+
+    <form class="intake-form" action="https://formsubmit.co/felixkeuya@gmail.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="New analyst support request">
+      <input type="hidden" name="_next" value="https://felix-keuya-portfolio.vercel.app/thank-you.html">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="text" name="_honey" class="honey-field" tabindex="-1" autocomplete="off">
+
+      <fieldset>
+        <legend>Your details</legend>
+        <div class="form-grid two">
+          <label>Full name
+            <input type="text" name="Full name" autocomplete="name" required>
+          </label>
+          <label>Work email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>Organisation
+            <input type="text" name="Organisation" autocomplete="organization" required>
+          </label>
+          <label>Role
+            <input type="text" name="Role" autocomplete="organization-title">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Assignment</legend>
+        <div class="form-grid two">
+          <label>Service needed
+            <select name="Service needed" id="service-select" required>
+              <option value="">Select a service</option>
+              <option>Project opportunity screen</option>
+              <option>Financial model review</option>
+              <option>Investment memo and lender pack</option>
+              <option>Market and commercial diligence</option>
+              <option>Embedded white label analyst</option>
+              <option>Other renewable energy analysis</option>
+            </select>
+          </label>
+          <label>Technology
+            <select name="Technology" required>
+              <option value="">Select technology</option>
+              <option>Solar PV</option>
+              <option>Battery energy storage</option>
+              <option>Solar plus storage</option>
+              <option>C&amp;I or distributed energy</option>
+              <option>Wind</option>
+              <option>Hydro or geothermal</option>
+              <option>Power market or transmission</option>
+              <option>Multiple or other</option>
+            </select>
+          </label>
+          <label>Project country or market
+            <input type="text" name="Project country or market" required>
+          </label>
+          <label>Current stage
+            <select name="Current stage" required>
+              <option value="">Select stage</option>
+              <option>Origination or early screen</option>
+              <option>Pre-feasibility</option>
+              <option>Feasibility or development</option>
+              <option>Financing or lender diligence</option>
+              <option>Investment or acquisition review</option>
+              <option>Construction or operations</option>
+              <option>Strategy or market entry</option>
+            </select>
+          </label>
+        </div>
+
+        <label>What decision or deliverable do you need?
+          <textarea name="Required decision or deliverable" rows="5" placeholder="For example: review an existing solar project finance model, identify material errors, run downside cases and provide a five page lender style memo." required></textarea>
+        </label>
+
+        <label>What information is already available?
+          <textarea name="Information available" rows="4" placeholder="For example: financial model, PPA draft, EPC budget, yield report, tariff data or market research. Do not include confidential details here."></textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Timing and commercial fit</legend>
+        <div class="form-grid two">
+          <label>Required by
+            <input type="date" name="Required by" required>
+          </label>
+          <label>Indicative budget
+            <select name="Indicative budget" required>
+              <option value="">Select a range</option>
+              <option>Under US$500</option>
+              <option>US$500 to US$1,000</option>
+              <option>US$1,000 to US$2,500</option>
+              <option>US$2,500 to US$5,000</option>
+              <option>Above US$5,000</option>
+              <option>Monthly retainer</option>
+              <option>Not yet set</option>
+            </select>
+          </label>
+          <label>Is an NDA required before documents are shared?
+            <select name="NDA required" required>
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+              <option>To be confirmed</option>
+            </select>
+          </label>
+          <label>How did you find me?
+            <select name="How found">
+              <option value="">Select</option>
+              <option>LinkedIn</option>
+              <option>Referral</option>
+              <option>Google or web search</option>
+              <option>GitHub</option>
+              <option>Existing relationship</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Optional non-confidential attachment</legend>
+        <label>Attach a brief
+          <input type="file" name="attachment" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx">
+        </label>
+        <p class="field-note">Do not upload confidential contracts, models, personal data or data room material before an NDA and scope are agreed.</p>
+      </fieldset>
+
+      <label class="consent">
+        <input type="checkbox" name="Consent" value="Agreed" required>
+        <span>I agree that the information submitted may be used to assess and respond to this enquiry. I have not included confidential information that requires an NDA.</span>
+      </label>
+
+      <button class="btn btn-primary submit-button" type="submit">Submit project brief</button>
+      <p class="form-note">The first live submission may trigger a one-time FormSubmit activation email to Felix before delivery is enabled.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div><a href="index.html" class="footer-logo"><span class="logo-dot"></span>Felix Keuya</a><p>Renewable energy project finance, commercial diligence and white label analyst support.</p></div>
+    <div><p class="footer-heading">Explore</p><a href="services.html">Services</a><a href="work.html">Selected work</a><a href="resume.html">Resume</a></div>
+    <div><p class="footer-heading">Contact</p><a href="mailto:felixkeuya@gmail.com">felixkeuya@gmail.com</a><a href="tel:+254797144302">+254 797 144 302</a><a href="https://www.linkedin.com/in/felix-keuya/" target="_blank" rel="noopener">LinkedIn</a></div>
+  </div>
+  <div class="container footer-bottom"><p>© 2026 Felix Keuya · Nairobi, Kenya</p><a href="privacy.html">Privacy</a></div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
