@@ -1,11 +1,13 @@
 (() => {
+  const isNestedPage = window.location.pathname.includes("/projects/") || window.location.pathname.includes("/models/");
+
   const addStylesheet = () => {
     const hasPolishStyles = [...document.querySelectorAll('link[rel="stylesheet"]')]
       .some((link) => (link.getAttribute("href") || "").split("?")[0].endsWith("polish.css"));
     if (hasPolishStyles) return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = window.location.pathname.includes("/projects/") ? "../polish.css" : "polish.css";
+    link.href = isNestedPage ? "../polish.css" : "polish.css";
     document.head.appendChild(link);
   };
 
@@ -90,11 +92,18 @@
     else element.classList.add("in");
   });
 
-  const service = new URLSearchParams(window.location.search).get("service");
+  const query = new URLSearchParams(window.location.search);
+  const service = query.get("service");
   const select = document.querySelector("#service-select");
   if (service && select) {
     const option = [...select.options].find((item) => item.text === service || item.value === service);
     if (option) select.value = option.value;
+  }
+
+  const modelRequested = query.get("model");
+  const decisionField = document.querySelector('textarea[name="Required decision or deliverable"]');
+  if (modelRequested && decisionField && !decisionField.value) {
+    decisionField.value = `I would like to review the ${modelRequested} and discuss how a similar model could be adapted for a live project.`;
   }
 
   const deadline = document.querySelector('input[name="Required by"]');
@@ -156,7 +165,7 @@
   if (consentText && !consentText.querySelector("a")) {
     consentText.append(" See the ");
     const privacyLink = document.createElement("a");
-    privacyLink.href = window.location.pathname.includes("/projects/") ? "../privacy.html" : "privacy.html";
+    privacyLink.href = isNestedPage ? "../privacy.html" : "privacy.html";
     privacyLink.textContent = "privacy notice";
     consentText.append(privacyLink, ".");
   }
