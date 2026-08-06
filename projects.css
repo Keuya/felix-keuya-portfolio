@@ -61,7 +61,7 @@
 .download-band>div:last-child{display:grid;gap:9px;text-align:center}.download-band small{color:var(--muted)}
 .cost-stack{display:flex;height:34px;border-radius:7px;overflow:hidden;background:#e8edf0}
 .cost-stack>div{display:flex;align-items:center;justify-content:center;width:var(--share);min-width:24px;background:var(--amber);border-right:1px solid rgba(9,21,32,.18);position:relative}
-.cost-stack>div:nth-child(2){background:#dc9431}.cost-stack>div:nth-child(3){background:#bf7924}.cost-stack>div:nth-child(4){background:#9f601b}
+.cost-stack>div:nth-child(2){background:#0f7f5f}.cost-stack>div:nth-child(3){background:#0b6650}.cost-stack>div:nth-child(4){background:#084d40}
 .cost-stack span,.cost-stack strong{display:none}
 .model-total{margin-top:18px;color:var(--muted);line-height:1.6}
 .transaction-flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:center}
