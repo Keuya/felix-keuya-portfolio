@@ -1,1 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title>Felix Keuya</title><rect width="64" height="64" rx="14" fill="#091520"/><circle cx="32" cy="32" r="18" fill="none" stroke="#f0b23e" stroke-width="5"/><circle cx="32" cy="32" r="6" fill="#f0b23e"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Keuya &amp; Co.</title>
+  <desc id="desc">Keuya &amp; Co. monogram in institutional blue and green.</desc>
+  <rect width="64" height="64" rx="12" fill="#071F35"/>
+  <path d="M18 14V50M18 33L42 14M18 33L44 50" fill="none" stroke="#F7FAF8" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+  <rect x="50" y="14" width="4" height="36" rx="2" fill="#149A72"/>
+</svg>
