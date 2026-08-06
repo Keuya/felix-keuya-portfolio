@@ -1,9 +1,1 @@
-{
-  "redirects": [
-    {
-      "source": "/assets/felix.jpg",
-      "destination": "/api/profile-photo",
-      "permanent": false
-    }
-  ]
-}
+{}
