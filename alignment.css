@@ -420,3 +420,287 @@ a[href^="tel:"]::after{
     flex-direction:column;
   }
 }
+
+/* Keuya & Co. name-led professional advisory identity */
+:root{
+  --navy:#071f35;
+  --navy-2:#0b2a47;
+  --navy-3:#123c5a;
+  --ink:#102331;
+  --muted:#5b6f79;
+  --paper:#f7faf8;
+  --paper-2:#eaf3f0;
+  --white:#ffffff;
+  --line:#d4e3de;
+  --line-dark:rgba(255,255,255,.13);
+  --amber:#149a72;
+  --amber-light:#55c8a6;
+  --amber-deep:#0b755b;
+  --success:#17855f;
+  --brand-blue:#1e5f91;
+  --brand-green:#149a72;
+  --brand-mint:#55c8a6;
+  --shadow:0 20px 54px rgba(7,31,53,.12);
+}
+
+body{
+  background:var(--paper);
+}
+
+::selection{
+  background:var(--brand-mint);
+  color:var(--navy);
+}
+
+#nav{
+  background:color-mix(in srgb,var(--paper) 94%,transparent);
+  border-bottom-color:var(--line);
+}
+
+.nav-logo,
+.footer-logo{
+  gap:11px;
+  font-size:0;
+  letter-spacing:0;
+}
+
+.nav-logo::after,
+.footer-logo::after{
+  content:"Keuya & Co.";
+  font-family:var(--serif);
+  font-size:1.18rem;
+  font-weight:560;
+  line-height:1;
+  letter-spacing:-.025em;
+  white-space:nowrap;
+}
+
+.nav-logo::after{
+  color:var(--ink);
+}
+
+.footer-logo::after{
+  color:#fff;
+}
+
+.logo-dot{
+  position:relative;
+  width:29px;
+  height:29px;
+  border-radius:3px;
+  background:linear-gradient(145deg,var(--brand-blue),var(--brand-green));
+  box-shadow:none;
+  overflow:hidden;
+}
+
+.logo-dot::before{
+  content:"K";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-family:var(--serif);
+  font-size:1rem;
+  font-weight:560;
+  line-height:1;
+}
+
+.logo-dot::after{
+  content:"";
+  position:absolute;
+  right:4px;
+  top:5px;
+  width:2px;
+  height:19px;
+  background:rgba(255,255,255,.72);
+}
+
+.nav-cta{
+  border-color:var(--brand-blue);
+  color:var(--brand-blue)!important;
+}
+
+.nav-cta:hover{
+  background:var(--brand-blue);
+  color:#fff!important;
+}
+
+.hero,
+.page-hero,
+.client-hero,
+.case-hero-authentic{
+  background-color:var(--navy);
+}
+
+.client-hero::after,
+.page-hero::after{
+  background:linear-gradient(90deg,rgba(7,31,53,.98) 0%,rgba(7,31,53,.86) 48%,rgba(7,31,53,.52) 100%);
+}
+
+.kicker,
+.section-dark .index,
+.case-label{
+  color:var(--brand-mint);
+}
+
+.index,
+.card-tag,
+.text-link,
+.step-num{
+  color:var(--amber-deep);
+}
+
+h1 em,
+h2 em{
+  color:var(--brand-mint);
+}
+
+.btn-primary{
+  background:var(--brand-green);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  background:#1eaa80;
+  color:#fff;
+  box-shadow:0 12px 30px rgba(20,154,114,.25);
+}
+
+.btn-ghost:hover{
+  border-color:var(--brand-mint);
+  color:var(--brand-mint);
+}
+
+.btn-dark{
+  background:var(--brand-blue);
+  color:#fff;
+}
+
+.btn-dark:hover{
+  background:var(--navy-3);
+}
+
+.trust-line span::before,
+.check-list li::before{
+  color:var(--brand-green);
+}
+
+.featured-card,
+.pricing-card.featured,
+.engagement-card.featured{
+  border-color:var(--brand-green);
+}
+
+.pricing-badge,
+.energy-case-label,
+.case-label{
+  background:var(--brand-green);
+  color:#fff;
+}
+
+.hero-analyst-card{
+  overflow:hidden;
+  border-color:rgba(85,200,166,.32);
+  background:rgba(7,31,53,.93);
+  box-shadow:0 30px 76px rgba(3,18,31,.42);
+}
+
+.hero-analyst-card::before{
+  content:"";
+  position:absolute;
+  z-index:4;
+  top:0;
+  left:0;
+  right:0;
+  height:4px;
+  background:linear-gradient(90deg,var(--brand-blue),var(--brand-green));
+}
+
+.hero-analyst-photo{
+  aspect-ratio:4/5;
+  background:linear-gradient(145deg,var(--navy-2),var(--navy-3));
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.hero-analyst-photo img,
+.portrait img{
+  content:url("https://avatars.githubusercontent.com/u/118135634?v=4&s=1024");
+  image-rendering:auto;
+  object-fit:cover;
+  object-position:center 18%;
+  filter:contrast(1.025) saturate(.96);
+}
+
+.hero-analyst-photo::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:28%;
+  pointer-events:none;
+  background:linear-gradient(to top,rgba(7,31,53,.34),transparent);
+}
+
+.hero-analyst-links a:first-child{
+  background:var(--brand-green);
+  border-color:var(--brand-green);
+  color:#fff;
+}
+
+.hero-analyst-meta span{
+  border-color:rgba(85,200,166,.22);
+}
+
+.portrait::after{
+  border-color:var(--brand-green);
+}
+
+.energy-case-card,
+.pricing-card,
+.engagement-card,
+.client-problem,
+.sample-card,
+.case-index-card,
+.service-card,
+.intake-form,
+.service-detail,
+.project-case{
+  border-color:var(--line);
+}
+
+.energy-band::after{
+  background:linear-gradient(90deg,rgba(7,31,53,.96),rgba(11,42,71,.84),rgba(20,154,114,.20));
+}
+
+.cta-band{
+  background:linear-gradient(135deg,var(--navy-3),var(--navy));
+}
+
+footer{
+  background:#051726;
+}
+
+.footer-grid a:hover{
+  color:var(--brand-mint);
+}
+
+.contact-box a[href^="mailto:"]:hover,
+.contact-box a[href^="tel:"]:hover{
+  border-color:var(--brand-green);
+}
+
+@media(max-width:760px){
+  .nav-logo::after,
+  .footer-logo::after{
+    font-size:1.05rem;
+  }
+
+  .logo-dot{
+    width:27px;
+    height:27px;
+  }
+
+  .hero-analyst-photo{
+    aspect-ratio:4/5;
+  }
+}
