@@ -1,0 +1,1 @@
+Authenticity refactor worklog. Case studies must separate anonymised live work, client-specific synthetic pilots and representative public models. No generic dashboards, invented outcomes or unsupported lender-ready claims.
