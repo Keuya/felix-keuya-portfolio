@@ -61,30 +61,17 @@
     else links.insertBefore(engagementLink, links.querySelector(".nav-cta"));
   }
 
-  document.querySelectorAll(".footer-heading").forEach((heading) => {
-    if (heading.textContent.trim() !== "Explore") return;
-    const column = heading.parentElement;
-    if (!column) return;
-
-    const insertBeforeResume = (newLink) => {
-      const resumeLink = [...column.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
-      if (resumeLink) column.insertBefore(newLink, resumeLink);
-      else column.appendChild(newLink);
-    };
-
-    if (!column.querySelector('a[href$="samples.html"]')) {
-      const samplesLink = document.createElement("a");
-      samplesLink.href = isNestedPage ? "../samples.html" : "samples.html";
-      samplesLink.textContent = "Samples";
-      insertBeforeResume(samplesLink);
-    }
-
-    if (!column.querySelector('a[href$="engagement.html"]')) {
-      const engagementLink = document.createElement("a");
-      engagementLink.href = isNestedPage ? "../engagement.html" : "engagement.html";
-      engagementLink.textContent = "Process";
-      insertBeforeResume(engagementLink);
-    }
+  const shortLabels = {
+    "services.html": "Services",
+    "work.html": "Work",
+    "samples.html": "Samples",
+    "engagement.html": "Process",
+    "resume.html": "Resume",
+    "request.html": "Contact"
+  };
+  document.querySelectorAll(".nav-links a, footer a").forEach((link) => {
+    const target = (link.getAttribute("href") || "").split("?")[0].split("#")[0].split("/").pop();
+    if (shortLabels[target]) link.textContent = shortLabels[target];
   });
 
   const processSection = document.querySelector("#process .container");
@@ -162,13 +149,6 @@
   if (deadline) {
     const today = new Date();
     deadline.min = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().split("T")[0];
-  }
-
-  const budgetSelect = document.querySelector('select[name="Indicative budget"]');
-  if (budgetSelect) {
-    [...budgetSelect.options].forEach((option) => {
-      if (/under\s+us\$?500/i.test(option.textContent)) option.remove();
-    });
   }
 
   const portrait = document.querySelector(".portrait");
