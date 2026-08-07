@@ -21,21 +21,27 @@ jobs:
     timeout-minutes: 8
     steps:
       - name: Check out site
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Wait for production deployment
+      - name: Wait for current production deployment
         shell: bash
         run: |
-          for attempt in {1..18}; do
+          for attempt in {1..24}; do
             status=$(curl --silent --output /dev/null --write-out "%{http_code}" https://felix-keuya-portfolio.vercel.app/ || true)
             if [ "$status" = "200" ]; then
-              echo "Production site is reachable."
-              exit 0
+              curl --fail --silent --show-error \
+                https://felix-keuya-portfolio.vercel.app/sitemap.xml \
+                --output /tmp/production-sitemap.xml || true
+
+              if [ -s /tmp/production-sitemap.xml ] && cmp -s sitemap.xml /tmp/production-sitemap.xml; then
+                echo "Current production deployment is live."
+                exit 0
+              fi
             fi
-            echo "Attempt $attempt: production returned $status; retrying in 10 seconds."
+            echo "Attempt $attempt: waiting for the current production deployment."
             sleep 10
           done
-          echo "Production was not reachable within the wait period."
+          echo "Current production sitemap was not live within the wait period."
           exit 1
 
       - name: Build IndexNow payload from sitemap
@@ -78,19 +84,21 @@ jobs:
       - name: Notify Google WebSub hub
         shell: bash
         run: |
-          curl --fail --silent --show-error --retry 3 --retry-all-errors \
+          code=$(curl --silent --show-error --retry 2 --retry-all-errors \
+            --output /tmp/websub-response.txt --write-out "%{http_code}" \
             --request POST \
             --header "Content-Type: application/x-www-form-urlencoded" \
             --data-urlencode "hub.mode=publish" \
             --data-urlencode "hub.url=https://felix-keuya-portfolio.vercel.app/feed.xml" \
-            https://pubsubhubbub.appspot.com/
+            https://pubsubhubbub.appspot.com/ || true)
+          echo "Google WebSub HTTP status: ${code:-unavailable}"
+          if [ -s /tmp/websub-response.txt ]; then cat /tmp/websub-response.txt; fi
+          case "$code" in
+            200|202|204) echo "Google WebSub notification accepted." ;;
+            *) echo "Google WebSub is optional; continuing without failing the workflow." ;;
+          esac
 
-      - name: Notify open-source WebSub hub
+      - name: Search discovery summary
         shell: bash
         run: |
-          curl --fail --silent --show-error --retry 3 --retry-all-errors \
-            --request POST \
-            --header "Content-Type: application/x-www-form-urlencoded" \
-            --data-urlencode "hub.mode=publish" \
-            --data-urlencode "hub.url=https://felix-keuya-portfolio.vercel.app/feed.xml" \
-            https://websubhub.com/hub
+          echo "Production is current, sitemap is live, and IndexNow accepted the URL submission."
