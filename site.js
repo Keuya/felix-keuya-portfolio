@@ -198,8 +198,9 @@
   if (service && select) {
     const normalised = service.toLowerCase();
     const option = [...select.options].find((item) => {
-      const value = `${item.text} ${item.value}`.toLowerCase();
-      return value === normalised || value.includes(normalised) || normalised.includes(item.text.toLowerCase());
+      const text = item.text.toLowerCase();
+      const value = item.value.toLowerCase();
+      return text === normalised || value === normalised || text.includes(normalised) || normalised.includes(text);
     });
     if (option) select.value = option.value;
   }
@@ -264,9 +265,9 @@
         "@graph": [
           { "@type": "WebSite", "@id": `${home}#website`, "url": home, "name": "Felix Keuya", "inLanguage": "en" },
           { "@type": "Person", "@id": `${home}#felix`, "name": "Felix Keuya", "url": home, "image": `${home}assets/felix.jpg`, "jobTitle": "Renewable Energy Project Finance Analyst", "sameAs": ["https://www.linkedin.com/in/felix-keuya/", "https://github.com/Keuya"], "knowsAbout": ["Renewable energy project finance", "Solar PV", "Battery storage", "PPAs", "Power markets", "Financial modelling"] },
-          { "@type": "ProfessionalService", "@id": `${home}#service`, "name": "Felix Keuya Renewable Energy Project Finance", "url": home, "founder": { "@id": `${home}#felix" }, "areaServed": ["Africa", "Emerging Markets"], "serviceType": ["Project finance analysis", "Financial model review", "Investment analysis", "Power market analysis"] }
+          { "@type": "ProfessionalService", "@id": `${home}#service`, "name": "Felix Keuya Renewable Energy Project Finance", "url": home, "founder": { "@id": `${home}#felix` }, "areaServed": ["Africa", "Emerging Markets"], "serviceType": ["Project finance analysis", "Financial model review", "Investment analysis", "Power market analysis"] }
         ]
-      }).replace(`${home}#felix\"`, `${home}#felix`);
+      });
     } else {
       const currentName = (document.querySelector("h1")?.textContent || document.title.split("|")[0]).trim();
       schema.textContent = JSON.stringify({
