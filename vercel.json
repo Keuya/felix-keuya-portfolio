@@ -1,1 +1,14 @@
-{}
+{
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/client-process.html",
+      "destination": "/engagement.html",
+      "permanent": true
+    }
+  ]
+}
