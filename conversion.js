@@ -1,36 +1,36 @@
 (() => {
   const decisions = {
     screen: {
-      eyebrow: "Origination and early-stage diligence",
-      title: "Decide whether the opportunity deserves more time and cost.",
-      text: "I test the commercial logic, evidence quality and bankability gaps before your team commits to full diligence.",
-      outputs: [["Decision", "Go, pause or investigate"],["Output", "2–5 page opportunity screen"],["Focus", "Revenue, costs, offtake, grid and execution"]],
-      service: "Project opportunity screen",
-      cta: "Request a decision sprint"
+      eyebrow: "Project screen",
+      title: "Is this worth pursuing?",
+      text: "I test the market, revenue case, costs and key risks before more time and money are committed.",
+      outputs: [["Decision", "Go, pause or review"],["Output", "Short project screen"],["Focus", "Revenue, costs, buyer and grid"]],
+      service: "Project screen",
+      cta: "Discuss a screen"
     },
     model: {
-      eyebrow: "Model assurance and lender readiness",
-      title: "Find the assumptions or formulas that could change the financing case.",
-      text: "I review model logic, operating assumptions, debt sizing, cover ratios and downside resilience, then prioritise the issues that matter to the decision.",
-      outputs: [["Review", "Formula and assumption issue register"],["Analysis", "DSCR, LLCR, returns and sensitivities"],["Output", "Marked-up model and review memo"]],
-      service: "Financial model review",
-      cta: "Request a model review"
+      eyebrow: "Model review",
+      title: "Does the model hold up?",
+      text: "I review assumptions, debt, returns and downside cases, then flag the points that can change the answer.",
+      outputs: [["Review", "Model issues"],["Analysis", "DSCR, LLCR and returns"],["Output", "Updated model and note"]],
+      service: "Model review",
+      cta: "Discuss a model review"
     },
     memo: {
-      eyebrow: "Investment committee and lender documentation",
-      title: "Turn scattered project information into a decision-ready pack.",
-      text: "I connect project economics, commercial structure, valuation, risks and outstanding diligence into a coherent memo or presentation for management, IC or lenders.",
-      outputs: [["Recommendation", "Clear decision and conditions"],["Analysis", "Valuation, financing and downside cases"],["Output", "Word memo or PowerPoint pack"]],
-      service: "Investment memo and lender pack",
-      cta: "Request a decision pack"
+      eyebrow: "Decision pack",
+      title: "Is the case ready?",
+      text: "I turn project data, finance and key risks into a clear pack for management, investors or lenders.",
+      outputs: [["Decision", "Clear recommendation"],["Analysis", "Finance and downside cases"],["Output", "Memo or presentation"]],
+      service: "Investment memo",
+      cta: "Discuss a decision pack"
     },
     capacity: {
-      eyebrow: "White-label execution capacity",
-      title: "Add analyst capacity without adding permanent headcount.",
-      text: "I work inside your templates and review process across models, memos, market diligence, client decks and recurring project work.",
-      outputs: [["Cadence", "Weekly priorities and delivery rhythm"],["Format", "Your templates and house style"],["Use case", "Overflow, transaction and research support"]],
-      service: "Embedded white label analyst",
-      cta: "Discuss embedded support"
+      eyebrow: "Team support",
+      title: "Does the team need help?",
+      text: "I add project finance and research capacity for models, memos, market work and presentations.",
+      outputs: [["Cadence", "Weekly priorities"],["Format", "Your templates"],["Use", "Project and research support"]],
+      service: "Team support",
+      cta: "Discuss team support"
     }
   };
 
@@ -76,12 +76,12 @@
   const serviceSelect = document.querySelector('#service-select');
   const serviceHint = document.querySelector('[data-service-hint]');
   const hints = {
-    "Project opportunity screen": "Best for an early go, pause or investigate decision before full diligence.",
-    "Financial model review": "Best for formula, assumption, debt sizing, coverage and sensitivity review.",
-    "Investment memo and lender pack": "Best for IC, management, lender or investor decision documentation.",
-    "Market and commercial diligence": "Best for market entry, tariffs, regulation, counterparties and project pipelines.",
-    "Embedded white label analyst": "Best for recurring models, memos, research and client deliverables under your brand.",
-    "Other renewable energy analysis": "Use the project description to explain the decision, output and deadline."
+    "Project screen": "For an early go, pause or review decision.",
+    "Model review": "For model logic, debt, returns and downside cases.",
+    "Investment memo": "For management, investor or lender decisions.",
+    "Market review": "For market entry, tariffs, grids and project pipelines.",
+    "Team support": "For recurring models, research, memos and presentations.",
+    "Other": "Use the project note to explain what you need."
   };
   const showHint = () => {
     if (!serviceSelect || !serviceHint) return;
