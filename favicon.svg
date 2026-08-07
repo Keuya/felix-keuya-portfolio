@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Felix Keuya</title>
-  <desc id="desc">Felix Keuya initials in institutional blue and green.</desc>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1E5F91"/>
-      <stop offset="1" stop-color="#149A72"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="12" fill="#071F35"/>
-  <rect x="10" y="10" width="44" height="44" rx="8" fill="url(#g)"/>
-  <text x="32" y="39" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#FFFFFF">FK</text>
-  <rect x="18" y="45" width="28" height="2.5" rx="1.25" fill="#55C8A6"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" aria-hidden="true"></svg>
