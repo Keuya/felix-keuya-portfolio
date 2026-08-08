@@ -7,6 +7,7 @@ Location: Nairobi, Kenya
 Contact: felixkeuya@gmail.com
 LinkedIn: https://www.linkedin.com/in/felix-keuya/
 About Felix: https://felixkeuya.com/about.html
+Media, speaking and citation resources: https://felixkeuya.com/media.html
 
 ## Core services
 
@@ -61,10 +62,18 @@ The following synthetic models can be inspected online. They do not contain conf
 - REC readiness and commercial model: https://felixkeuya.com/projects/rec-readiness-commercial-model.html
 - Zambia, DRC and wider African renewable project portfolio: https://felixkeuya.com/projects/africa-renewable-project-development-portfolio.html
 
+## Media, speaking and citation
+
+- Media resources: https://felixkeuya.com/media.html
+  - Short and long biographies, headshot, areas of expertise, preferred attribution and public resources that editors, event organisers, researchers and partners can cite or link to.
+- Preferred attribution: Felix Keuya, Renewable Energy Project Finance Analyst, https://felixkeuya.com/
+- For citations to public tools, models or guides, link directly to the relevant page rather than only to the homepage.
+
 ## Main pages
 
 - Home: https://felixkeuya.com/
 - About: https://felixkeuya.com/about.html
+- Media resources: https://felixkeuya.com/media.html
 - Services overview: https://felixkeuya.com/services.html
 - Selected work: https://felixkeuya.com/work.html
 - Models and samples: https://felixkeuya.com/samples.html

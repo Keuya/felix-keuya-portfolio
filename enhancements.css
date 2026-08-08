@@ -32,6 +32,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* Mobile action bar. Hidden on desktop and on form/resume pages by JS. */
 .mobile-action-bar{display:none}
 
+/* Quiet distribution controls on useful public resources. */
+.resource-share{max-width:1180px;margin:0 auto 52px;padding:18px 22px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 24px;border:1px solid #d4e3de;border-radius:12px;background:#f7faf8;color:#102331}
+.resource-share>div:first-child{display:flex;flex-direction:column;gap:4px}
+.resource-share strong{font:700 15px/1.25 Inter,sans-serif}
+.resource-share span{font:400 13px/1.45 Inter,sans-serif;color:#516773}
+.resource-share-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.resource-share-actions button,.resource-share-actions a{min-height:40px;display:inline-flex;align-items:center;justify-content:center;padding:0 14px;border:1px solid #1e5f91;border-radius:8px;background:#fff;color:#1e5f91;text-decoration:none;font:700 13px/1 Inter,sans-serif;cursor:pointer}
+.resource-share-actions a{background:#1e5f91;color:#fff}
+.resource-share-status{grid-column:1/-1;min-height:18px}
+
 /* Regional experience visual system. */
 .regional-hero{position:relative;overflow:hidden;background:#071f35!important;border-bottom:0!important}
 .regional-hero .case-hero-media{position:absolute;inset:0;z-index:0}
@@ -72,6 +82,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .mobile-action-bar a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:9px;text-decoration:none;font:700 14px/1 Inter,sans-serif}
   .mobile-action-bar a:first-child{border:1px solid #1e5f91;color:#1e5f91;background:#fff}
   .mobile-action-bar a:last-child{border:1px solid #149a72;color:#fff;background:#149a72}
+  .resource-share{margin:0 16px 40px;grid-template-columns:1fr;padding:16px}
+  .resource-share-actions{justify-content:flex-start}
+  .resource-share-status{grid-column:auto}
   .experience-visual-grid{grid-template-columns:1fr;gap:14px}
   .experience-visual-card{min-height:230px}
   .regional-hero::after{background:linear-gradient(180deg,rgba(7,31,53,.78),rgba(7,31,53,.96))}
