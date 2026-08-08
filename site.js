@@ -52,6 +52,7 @@
   ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
   ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: `${siteOrigin}/assets/felix.jpg` });
   ensureLink('link[rel="canonical"]', { rel: "canonical", href: canonicalUrl });
+  ensureLink('link[rel="author"]', { rel: "author", href: `${siteOrigin}/about.html` });
   ensureLink('link[rel="alternate"][type="application/rss+xml"], link[rel="alternate"][type="application/atom+xml"]', {
     rel: "alternate",
     type: "application/atom+xml",
@@ -89,6 +90,7 @@
     "samples.html": "Samples | Felix Keuya",
     "insights.html": "Insights | Felix Keuya",
     "tools.html": "Tools | Felix Keuya",
+    "media.html": "Media, Speaking & Citation Resources | Felix Keuya",
     "engagement.html": "Process | Felix Keuya",
     "resume.html": "Resume | Felix Keuya",
     "request.html": "Contact | Felix Keuya"
@@ -141,6 +143,7 @@
     "samples.html": "Samples",
     "insights.html": "Insights",
     "tools.html": "Tools",
+    "media.html": "Media",
     "engagement.html": "Process",
     "resume.html": "Resume",
     "request.html": "Contact"
@@ -278,11 +281,10 @@
   }
 
   document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-    const address = (link.getAttribute("href") || "").split("?")[0];
-    link.setAttribute("href", `${address}?subject=Renewable%20energy%20project%20enquiry`);
-    link.textContent = "Email Felix";
-    link.setAttribute("aria-label", "Email Felix");
-    link.setAttribute("title", "Open your email application");
+    const href = link.getAttribute("href") || "";
+    if (!href.includes("?")) link.setAttribute("href", `${href}?subject=Renewable%20energy%20project%20enquiry`);
+    link.setAttribute("aria-label", link.getAttribute("aria-label") || "Email Felix");
+    link.setAttribute("title", link.getAttribute("title") || "Open your email application");
   });
 
   document.querySelectorAll('a[href^="tel:"]').forEach((link) => {
@@ -364,6 +366,40 @@
       callout.innerHTML = `<div><strong>${toolMap[path].title}</strong><p>${toolMap[path].text}</p></div><a class="btn btn-dark" href="${toolMap[path].href}">Open free tool</a>`;
       target.appendChild(callout);
     }
+  }
+
+  const shareableResource = (pathName.includes("/insights/") || pathName.includes("/tools/")) && path.endsWith(".html");
+  if (shareableResource && !document.querySelector(".resource-share")) {
+    const ctaBand = document.querySelector(".cta-band");
+    const share = document.createElement("aside");
+    share.className = "resource-share";
+    share.setAttribute("aria-label", "Share this resource");
+    const linkedInUrl = new URL(canonicalUrl);
+    linkedInUrl.searchParams.set("utm_source", "linkedin");
+    linkedInUrl.searchParams.set("utm_medium", "social");
+    linkedInUrl.searchParams.set("utm_campaign", "resource-share");
+    share.innerHTML = `<div><strong>Useful for a project team?</strong><span>Share the clean public resource rather than a screenshot.</span></div><div class="resource-share-actions"><button type="button" data-copy-resource>Copy link</button><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(linkedInUrl.toString())}" target="_blank" rel="noopener">Share on LinkedIn</a></div><span class="resource-share-status" data-copy-status aria-live="polite"></span>`;
+    if (ctaBand) ctaBand.insertAdjacentElement("beforebegin", share);
+    else document.querySelector("main")?.appendChild(share);
+
+    share.querySelector("[data-copy-resource]")?.addEventListener("click", async () => {
+      const status = share.querySelector("[data-copy-status]");
+      try {
+        await navigator.clipboard.writeText(canonicalUrl);
+        if (status) status.textContent = "Link copied.";
+      } catch (_) {
+        const input = document.createElement("textarea");
+        input.value = canonicalUrl;
+        input.setAttribute("readonly", "");
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+        if (status) status.textContent = "Link copied.";
+      }
+    });
   }
 
   if (path !== "index.html" && !document.querySelector('script[type="application/ld+json"]')) {
