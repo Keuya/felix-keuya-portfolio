@@ -1,5 +1,28 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://felixkeuya.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.felixkeuya.com"
+        }
+      ],
+      "destination": "https://felixkeuya.com/:path*",
+      "permanent": true
+    },
     {
       "source": "/index.html",
       "destination": "/",
