@@ -1,8 +1,13 @@
 (() => {
+  const siteOrigin = "https://felixkeuya.com";
+  const legacyOrigin = "https://felix-keuya-portfolio.vercel.app";
   const pathName = window.location.pathname;
-  const isNestedPage = pathName.includes("/projects/") || pathName.includes("/models/");
+  const isNestedPage = ["/projects/", "/models/", "/services/", "/insights/"].some((segment) => pathName.includes(segment));
   const base = isNestedPage ? "../" : "";
   const path = pathName.split("/").pop() || "index.html";
+
+  const canonicalPath = pathName === "/" || pathName.endsWith("/index.html") ? "/" : pathName;
+  const canonicalUrl = `${siteOrigin}${canonicalPath}`;
 
   const ensureStylesheet = (filename) => {
     const hasStylesheet = [...document.querySelectorAll('link[rel="stylesheet"]')]
@@ -24,6 +29,16 @@
     return element;
   };
 
+  const ensureLink = (selector, attributes) => {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement("link");
+      document.head.appendChild(element);
+    }
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+
   ensureStylesheet("polish.css");
   ensureStylesheet("visuals.css");
   ensureStylesheet("alignment.css");
@@ -31,22 +46,38 @@
 
   ensureMeta('meta[name="theme-color"]', { name: "theme-color", content: "#071f35" });
   ensureMeta('meta[name="referrer"]', { name: "referrer", content: "strict-origin-when-cross-origin" });
-  ensureMeta('meta[property="og:image"]', { property: "og:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
+  ensureMeta('meta[property="og:url"]', { property: "og:url", content: canonicalUrl });
+  ensureMeta('meta[property="og:image"]', { property: "og:image", content: `${siteOrigin}/assets/felix.jpg` });
   ensureMeta('meta[property="og:image:alt"]', { property: "og:image:alt", content: "Felix Keuya, renewable energy project finance analyst" });
   ensureMeta('meta[name="twitter:card"]', { name: "twitter:card", content: "summary_large_image" });
-  ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: "https://felix-keuya-portfolio.vercel.app/assets/felix.jpg" });
+  ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: `${siteOrigin}/assets/felix.jpg` });
+  ensureLink('link[rel="canonical"]', { rel: "canonical", href: canonicalUrl });
+  ensureLink('link[rel="alternate"][type="application/rss+xml"], link[rel="alternate"][type="application/atom+xml"]', {
+    rel: "alternate",
+    type: "application/atom+xml",
+    title: "Felix Keuya renewable energy and project finance updates",
+    href: `${siteOrigin}/feed.xml`
+  });
 
-  /* Remove the old FK icon from browser UI and site chrome. */
+  /* Keep a small brand-colour favicon without introducing a separate logo. */
+  document.querySelectorAll('link[rel*="icon"]').forEach((element) => element.remove());
+  const favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/svg+xml";
+  favicon.href = `${base}favicon.svg`;
+  document.head.appendChild(favicon);
+
   document.querySelectorAll('.logo-dot').forEach((element) => element.remove());
-  document.querySelectorAll('link[rel*="icon"], link[rel="apple-touch-icon"]').forEach((element) => element.remove());
-  const blankIcon = document.createElement("link");
-  blankIcon.rel = "icon";
-  blankIcon.type = "image/svg+xml";
-  blankIcon.href = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1' viewBox='0 0 1 1'%3E%3C/svg%3E";
-  document.head.appendChild(blankIcon);
   document.querySelectorAll('.nav-logo,.footer-logo').forEach((element) => {
     element.textContent = "Felix Keuya";
     if (element.classList.contains("nav-logo")) element.setAttribute("aria-label", "Felix Keuya home");
+  });
+
+  /* Migrate any legacy absolute URLs embedded in static JSON-LD to the custom domain. */
+  document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
+    if (script.textContent.includes(legacyOrigin)) {
+      script.textContent = script.textContent.split(legacyOrigin).join(siteOrigin);
+    }
   });
 
   const titleMap = {
@@ -54,6 +85,7 @@
     "services.html": "Services | Felix Keuya",
     "work.html": "Work | Felix Keuya",
     "samples.html": "Samples | Felix Keuya",
+    "insights.html": "Insights | Felix Keuya",
     "engagement.html": "Process | Felix Keuya",
     "resume.html": "Resume | Felix Keuya",
     "request.html": "Contact | Felix Keuya"
@@ -65,28 +97,39 @@
   const button = document.querySelector(".menu-button");
   const links = document.querySelector(".nav-links");
 
+  const insertBeforeResumeOrContact = (link) => {
+    if (!links) return;
+    const resumeLink = [...links.querySelectorAll("a")].find((item) => (item.getAttribute("href") || "").endsWith("resume.html"));
+    if (resumeLink) links.insertBefore(link, resumeLink);
+    else links.insertBefore(link, links.querySelector(".nav-cta"));
+  };
+
   if (links && !links.querySelector('a[href$="samples.html"]')) {
     const samplesLink = document.createElement("a");
     samplesLink.href = `${base}samples.html`;
     samplesLink.textContent = "Samples";
-    const resumeLink = [...links.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
-    if (resumeLink) links.insertBefore(samplesLink, resumeLink);
-    else links.insertBefore(samplesLink, links.querySelector(".nav-cta"));
+    insertBeforeResumeOrContact(samplesLink);
+  }
+
+  if (links && !links.querySelector('a[href$="insights.html"]')) {
+    const insightsLink = document.createElement("a");
+    insightsLink.href = `${base}insights.html`;
+    insightsLink.textContent = "Insights";
+    insertBeforeResumeOrContact(insightsLink);
   }
 
   if (links && !links.querySelector('a[href$="engagement.html"]')) {
     const engagementLink = document.createElement("a");
     engagementLink.href = `${base}engagement.html`;
     engagementLink.textContent = "Process";
-    const resumeLink = [...links.querySelectorAll("a")].find((link) => (link.getAttribute("href") || "").endsWith("resume.html"));
-    if (resumeLink) links.insertBefore(engagementLink, resumeLink);
-    else links.insertBefore(engagementLink, links.querySelector(".nav-cta"));
+    insertBeforeResumeOrContact(engagementLink);
   }
 
   const shortLabels = {
     "services.html": "Services",
     "work.html": "Work",
     "samples.html": "Samples",
+    "insights.html": "Insights",
     "engagement.html": "Process",
     "resume.html": "Resume",
     "request.html": "Contact"
@@ -253,32 +296,20 @@
     node.nodeValue = text;
   });
 
-  /* Add lightweight structured data for discovery. */
-  if (!document.querySelector('script[data-site-schema="true"]')) {
+  /* Add breadcrumbs only when the page does not already provide structured data. */
+  if (path !== "index.html" && !document.querySelector('script[type="application/ld+json"]')) {
+    const currentName = (document.querySelector("h1")?.textContent || document.title.split("|")[0]).trim();
     const schema = document.createElement("script");
     schema.type = "application/ld+json";
     schema.dataset.siteSchema = "true";
-    const home = "https://felix-keuya-portfolio.vercel.app/";
-    if (path === "index.html") {
-      schema.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          { "@type": "WebSite", "@id": `${home}#website`, "url": home, "name": "Felix Keuya", "inLanguage": "en" },
-          { "@type": "Person", "@id": `${home}#felix`, "name": "Felix Keuya", "url": home, "image": `${home}assets/felix.jpg`, "jobTitle": "Renewable Energy Project Finance Analyst", "sameAs": ["https://www.linkedin.com/in/felix-keuya/", "https://github.com/Keuya"], "knowsAbout": ["Renewable energy project finance", "Solar PV", "Battery storage", "PPAs", "Power markets", "Financial modelling"] },
-          { "@type": "ProfessionalService", "@id": `${home}#service`, "name": "Felix Keuya Renewable Energy Project Finance", "url": home, "founder": { "@id": `${home}#felix` }, "areaServed": ["Africa", "Emerging Markets"], "serviceType": ["Project finance analysis", "Financial model review", "Investment analysis", "Power market analysis"] }
-        ]
-      });
-    } else {
-      const currentName = (document.querySelector("h1")?.textContent || document.title.split("|")[0]).trim();
-      schema.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": home },
-          { "@type": "ListItem", "position": 2, "name": currentName, "item": window.location.href.split("#")[0].split("?")[0] }
-        ]
-      });
-    }
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${siteOrigin}/` },
+        { "@type": "ListItem", "position": 2, "name": currentName, "item": canonicalUrl }
+      ]
+    });
     document.head.appendChild(schema);
   }
 })();

@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1" aria-hidden="true"></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Felix Keuya">
+  <rect width="48" height="48" rx="12" fill="#071f35"/>
+  <path d="M0 31 L48 13 V48 H0 Z" fill="#0ea5a8"/>
+  <path d="M0 38 L48 25 V48 H0 Z" fill="#31c48d" opacity="0.95"/>
+  <circle cx="14" cy="14" r="5" fill="#e8f4f4"/>
+</svg>

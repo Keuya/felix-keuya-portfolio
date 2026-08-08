@@ -27,14 +27,14 @@ jobs:
         shell: bash
         run: |
           for attempt in {1..24}; do
-            status=$(curl --silent --output /dev/null --write-out "%{http_code}" https://felix-keuya-portfolio.vercel.app/ || true)
+            status=$(curl --silent --output /dev/null --write-out "%{http_code}" https://felixkeuya.com/ || true)
             if [ "$status" = "200" ]; then
               curl --fail --silent --show-error \
-                https://felix-keuya-portfolio.vercel.app/sitemap.xml \
+                https://felixkeuya.com/sitemap.xml \
                 --output /tmp/production-sitemap.xml || true
 
               if [ -s /tmp/production-sitemap.xml ] && cmp -s sitemap.xml /tmp/production-sitemap.xml; then
-                echo "Current production deployment is live."
+                echo "Current production deployment is live on felixkeuya.com."
                 exit 0
               fi
             fi
@@ -55,9 +55,9 @@ jobs:
           namespace = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
           urls = [node.text.strip() for node in root.findall("sm:url/sm:loc", namespace) if node.text]
           payload = {
-              "host": "felix-keuya-portfolio.vercel.app",
+              "host": "felixkeuya.com",
               "key": "7466da5f4210c73cef578955ef7f5a42",
-              "keyLocation": "https://felix-keuya-portfolio.vercel.app/7466da5f4210c73cef578955ef7f5a42.txt",
+              "keyLocation": "https://felixkeuya.com/7466da5f4210c73cef578955ef7f5a42.txt",
               "urlList": urls,
           }
           with open("/tmp/indexnow.json", "w", encoding="utf-8") as handle:
@@ -81,7 +81,7 @@ jobs:
             *) exit 1 ;;
           esac
 
-      - name: Notify Google WebSub hub
+      - name: Notify WebSub hub
         shell: bash
         run: |
           code=$(curl --silent --show-error --retry 2 --retry-all-errors \
@@ -89,16 +89,16 @@ jobs:
             --request POST \
             --header "Content-Type: application/x-www-form-urlencoded" \
             --data-urlencode "hub.mode=publish" \
-            --data-urlencode "hub.url=https://felix-keuya-portfolio.vercel.app/feed.xml" \
+            --data-urlencode "hub.url=https://felixkeuya.com/feed.xml" \
             https://pubsubhubbub.appspot.com/ || true)
-          echo "Google WebSub HTTP status: ${code:-unavailable}"
+          echo "WebSub HTTP status: ${code:-unavailable}"
           if [ -s /tmp/websub-response.txt ]; then cat /tmp/websub-response.txt; fi
           case "$code" in
-            200|202|204) echo "Google WebSub notification accepted." ;;
-            *) echo "Google WebSub is optional; continuing without failing the workflow." ;;
+            200|202|204) echo "WebSub notification accepted." ;;
+            *) echo "WebSub is optional; continuing without failing the workflow." ;;
           esac
 
       - name: Search discovery summary
         shell: bash
         run: |
-          echo "Production is current, sitemap is live, and IndexNow accepted the URL submission."
+          echo "Production is current on felixkeuya.com, sitemap is live, and IndexNow accepted the URL submission."
