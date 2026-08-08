@@ -21,6 +21,15 @@ About Felix: https://felixkeuya.com/about.html
 - White-label renewable energy analyst support: https://felixkeuya.com/services/white-label-energy-analyst-support.html
   - Confidential models, research, investment memos, project screening, databases and presentations for client teams.
 
+## Free project finance tools
+
+Tools hub: https://felixkeuya.com/tools.html
+
+- Project Finance DSCR and Debt Capacity Calculator: https://felixkeuya.com/tools/project-finance-dscr-debt-capacity.html
+  - Calculates simplified CFADS, target-DSCR annual debt service, indicative level-debt-service capacity and DSCR on a proposed debt amount.
+- PPA and Wheeling Savings Calculator: https://felixkeuya.com/tools/ppa-wheeling-savings-calculator.html
+  - Compares grid-only annual cost with PPA energy, network/service charges and residual grid supply, and calculates buyer savings and a break-even PPA price.
+
 ## Practical project finance insights
 
 Insights hub: https://felixkeuya.com/insights.html
@@ -60,6 +69,7 @@ The following synthetic models can be inspected online. They do not contain conf
 - Selected work: https://felixkeuya.com/work.html
 - Models and samples: https://felixkeuya.com/samples.html
 - Insights: https://felixkeuya.com/insights.html
+- Tools: https://felixkeuya.com/tools.html
 - Engagement process: https://felixkeuya.com/engagement.html
 - Project brief / contact: https://felixkeuya.com/request.html
 - Resume: https://felixkeuya.com/resume.html
