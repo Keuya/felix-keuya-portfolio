@@ -7,6 +7,12 @@
 .nav-logo{font-family:var(--serif,Georgia,serif)!important;font-weight:560!important;color:var(--ink,#102331)!important}
 .footer-logo{font-family:var(--serif,Georgia,serif)!important;font-weight:560!important;color:#fff!important}
 
+/* Editorial headings stay readable on wide screens instead of turning into poster-sized blocks. */
+.page-hero h1,.case-hero-authentic h1{font-size:clamp(2.35rem,4.2vw,3.55rem)!important;line-height:1.04!important;letter-spacing:-.022em!important}
+.page-hero h1{max-width:820px!important}
+.case-hero-authentic h1{max-width:760px!important}
+h1.long-title{font-size:clamp(2.15rem,3.7vw,3.25rem)!important;max-width:800px!important}
+
 /* Strong keyboard and touch behaviour. */
 a,button,input,select,textarea,summary{touch-action:manipulation}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #55c8a6!important;outline-offset:3px!important}
@@ -60,6 +66,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 
 @media(max-width:760px){
+  .page-hero h1,.case-hero-authentic h1,h1.long-title{font-size:clamp(2rem,9.5vw,2.75rem)!important}
   body.has-mobile-actions{padding-bottom:76px}
   .mobile-action-bar{position:fixed;z-index:9998;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px;border:1px solid rgba(212,227,222,.95);border-radius:14px;background:rgba(247,250,248,.94);box-shadow:0 14px 38px rgba(7,31,53,.18);backdrop-filter:blur(14px)}
   .mobile-action-bar a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:9px;text-decoration:none;font:700 14px/1 Inter,sans-serif}

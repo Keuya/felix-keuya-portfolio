@@ -2,7 +2,7 @@
   const siteOrigin = "https://felixkeuya.com";
   const legacyOrigin = "https://felix-keuya-portfolio.vercel.app";
   const pathName = window.location.pathname;
-  const isNestedPage = ["/projects/", "/models/", "/services/", "/insights/"].some((segment) => pathName.includes(segment));
+  const isNestedPage = ["/projects/", "/models/", "/services/", "/insights/", "/tools/"].some((segment) => pathName.includes(segment));
   const base = isNestedPage ? "../" : "";
   const path = pathName.split("/").pop() || "index.html";
 
@@ -59,7 +59,6 @@
     href: `${siteOrigin}/feed.xml`
   });
 
-  /* Keep a small brand-colour favicon without introducing a separate logo. */
   document.querySelectorAll('link[rel*="icon"]').forEach((element) => element.remove());
   const favicon = document.createElement("link");
   favicon.rel = "icon";
@@ -73,11 +72,14 @@
     if (element.classList.contains("nav-logo")) element.setAttribute("aria-label", "Felix Keuya home");
   });
 
-  /* Migrate any legacy absolute URLs embedded in static JSON-LD to the custom domain. */
   document.querySelectorAll('script[type="application/ld+json"]').forEach((script) => {
     if (script.textContent.includes(legacyOrigin)) {
       script.textContent = script.textContent.split(legacyOrigin).join(siteOrigin);
     }
+  });
+
+  document.querySelectorAll(`a[href^="${legacyOrigin}"]`).forEach((link) => {
+    link.href = link.href.replace(legacyOrigin, siteOrigin);
   });
 
   const titleMap = {
@@ -86,6 +88,7 @@
     "work.html": "Work | Felix Keuya",
     "samples.html": "Samples | Felix Keuya",
     "insights.html": "Insights | Felix Keuya",
+    "tools.html": "Tools | Felix Keuya",
     "engagement.html": "Process | Felix Keuya",
     "resume.html": "Resume | Felix Keuya",
     "request.html": "Contact | Felix Keuya"
@@ -118,6 +121,13 @@
     insertBeforeResumeOrContact(insightsLink);
   }
 
+  if (links && !links.querySelector('a[href$="tools.html"]')) {
+    const toolsLink = document.createElement("a");
+    toolsLink.href = `${base}tools.html`;
+    toolsLink.textContent = "Tools";
+    insertBeforeResumeOrContact(toolsLink);
+  }
+
   if (links && !links.querySelector('a[href$="engagement.html"]')) {
     const engagementLink = document.createElement("a");
     engagementLink.href = `${base}engagement.html`;
@@ -130,6 +140,7 @@
     "work.html": "Work",
     "samples.html": "Samples",
     "insights.html": "Insights",
+    "tools.html": "Tools",
     "engagement.html": "Process",
     "resume.html": "Resume",
     "request.html": "Contact"
@@ -137,6 +148,15 @@
   document.querySelectorAll(".nav-links a, footer a").forEach((link) => {
     const target = (link.getAttribute("href") || "").split("?")[0].split("#")[0].split("/").pop();
     if (shortLabels[target]) link.textContent = shortLabels[target];
+  });
+
+  document.querySelectorAll("footer .footer-grid > div:nth-child(2)").forEach((group) => {
+    if (!group.querySelector('a[href$="tools.html"]')) {
+      const toolLink = document.createElement("a");
+      toolLink.href = `${base}tools.html`;
+      toolLink.textContent = "Tools";
+      group.appendChild(toolLink);
+    }
   });
 
   const closeMenu = () => {
@@ -171,7 +191,6 @@
     if (target && target === path) link.setAttribute("aria-current", "page");
   });
 
-  /* Quiet scroll progress on longer pages. */
   if (!document.querySelector(".site-progress")) {
     const progress = document.createElement("div");
     progress.className = "site-progress";
@@ -211,7 +230,6 @@
     else element.classList.add("in");
   });
 
-  /* Improve image loading without delaying the first visible image. */
   const images = [...document.querySelectorAll("img")];
   images.forEach((image, index) => {
     image.decoding = "async";
@@ -225,7 +243,6 @@
     }
   });
 
-  /* Keep mobile visitors one tap from proof or contact. */
   if (!["request.html", "resume.html"].includes(path) && !document.querySelector(".mobile-action-bar")) {
     const mobileBar = document.createElement("nav");
     mobileBar.className = "mobile-action-bar";
@@ -280,23 +297,75 @@
     link.setAttribute("rel", [...rel].join(" "));
   });
 
-  /* Remove visible dashes and hyphenated marketing language while leaving URLs and form values alone. */
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  while (walker.nextNode()) textNodes.push(walker.currentNode);
-  textNodes.forEach((node) => {
-    const parent = node.parentElement;
-    if (!parent || parent.closest("script,style,textarea,input,select,option,code,pre")) return;
-    let text = node.nodeValue;
-    text = text.replace(/\s*—\s*/g, ". ");
-    text = text.replace(/(\d)\s*–\s*(\d)/g, "$1 to $2");
-    text = text.replace(/\s*–\s*/g, " ");
-    text = text.replace(/([A-Za-z])[-‑]([A-Za-z])/g, "$1 $2");
-    text = text.replace(/\s{2,}/g, " ");
-    node.nodeValue = text;
+  /* Small wording corrections for older case-study labels. Source copy is being revised separately; this avoids mechanical punctuation rewriting. */
+  const exactTextReplacements = new Map([
+    ["Analyst note", "My read"],
+    ["Human judgement", "My read"],
+    ["The human judgement", "My read"],
+    ["The point", "What changed my view"],
+    ["Decision reached", "What I recommended"],
+    ["The commercial question is not whether the PPA tariff is lower than the grid tariff. It is whether the buyer's full delivered cost is lower after timing, network charges, losses and residual supply are included.", "A low PPA tariff can still produce an expensive power bill. I compare the buyer's full delivered cost after timing, network charges, losses and residual grid supply."]
+  ]);
+  document.querySelectorAll("body *").forEach((element) => {
+    if (element.children.length || element.closest("script,style,textarea,input,select,option,code,pre")) return;
+    const text = element.textContent.trim();
+    if (exactTextReplacements.has(text)) element.textContent = exactTextReplacements.get(text);
   });
 
-  /* Add breadcrumbs only when the page does not already provide structured data. */
+  const toolMap = {
+    "solar-project-finance-model-dscr-cfads.html": {
+      href: `${base}tools/project-finance-dscr-debt-capacity.html`,
+      title: "Run the DSCR and debt-capacity check",
+      text: "Use the free calculator to test CFADS, target DSCR, level debt service and indicative debt capacity before opening a full model."
+    },
+    "renewable-energy-project-finance-africa.html": {
+      href: `${base}tools/project-finance-dscr-debt-capacity.html`,
+      title: "Run a quick debt-capacity screen",
+      text: "Test the first-pass relationship between CFADS, target DSCR, interest rate and tenor."
+    },
+    "zambia-solar-project-finance-model.html": {
+      href: `${base}tools/project-finance-dscr-debt-capacity.html`,
+      title: "Try the DSCR calculator on your own assumptions",
+      text: "A quick screen will not replace the lender model, but it is useful for checking whether the debt quantum is in the right range."
+    },
+    "public-solar-ipp-model.html": {
+      href: `${base}tools/project-finance-dscr-debt-capacity.html`,
+      title: "Check debt capacity without opening Excel",
+      text: "Use the free DSCR calculator for an indicative first pass, then compare it with the full public model."
+    },
+    "south-africa-corporate-ppa-wheeling-economics.html": {
+      href: `${base}tools/ppa-wheeling-savings-calculator.html`,
+      title: "Run the buyer savings check",
+      text: "Compare grid-only cost with PPA energy, network and service charges, residual supply and the break-even PPA price."
+    },
+    "ppa-wheeling-analysis-africa.html": {
+      href: `${base}tools/ppa-wheeling-savings-calculator.html`,
+      title: "Use the PPA and wheeling calculator",
+      text: "Start with a simple delivered-cost comparison before moving into interval data and settlement detail."
+    },
+    "south-africa-corporate-ppa-wheeling.html": {
+      href: `${base}tools/ppa-wheeling-savings-calculator.html`,
+      title: "Rebuild the Year 1 buyer comparison",
+      text: "Use your own load, PPA price, network charges and grid benchmark to see where the saving comes from."
+    },
+    "sa-corporate-ppa-wheeling-model.html": {
+      href: `${base}tools/ppa-wheeling-savings-calculator.html`,
+      title: "Run a quick delivered-cost screen",
+      text: "Use the calculator for a first pass, then use the full model for profiles, settlement and sensitivities."
+    }
+  };
+
+  if (toolMap[path] && !document.querySelector(".related-tool-callout")) {
+    ensureStylesheet("tools.css");
+    const target = document.querySelector(".case-story, .prose, .energy-project-narrative, main .container");
+    if (target) {
+      const callout = document.createElement("div");
+      callout.className = "related-tool-callout";
+      callout.innerHTML = `<div><strong>${toolMap[path].title}</strong><p>${toolMap[path].text}</p></div><a class="btn btn-dark" href="${toolMap[path].href}">Open free tool</a>`;
+      target.appendChild(callout);
+    }
+  }
+
   if (path !== "index.html" && !document.querySelector('script[type="application/ld+json"]')) {
     const currentName = (document.querySelector("h1")?.textContent || document.title.split("|")[0]).trim();
     const schema = document.createElement("script");
