@@ -168,5 +168,32 @@
     addHidden("Enquiry page", `${window.location.origin}${window.location.pathname}`);
   }
 
+  /* Public launch record badge supplied by Website Launches. */
+  const footerBrand = document.querySelector("footer .footer-grid > div:first-child");
+  if (footerBrand && !footerBrand.querySelector('.website-launch-badge')) {
+    const badge = document.createElement('a');
+    badge.className = 'website-launch-badge';
+    badge.href = 'https://websitelaunches.com/site/felixkeuya.com';
+    badge.target = '_blank';
+    badge.rel = 'noopener';
+    badge.title = 'View the public launch record for felixkeuya.com';
+    badge.style.display = 'inline-block';
+    badge.style.marginTop = '16px';
+
+    const image = document.createElement('img');
+    image.src = 'https://websitelaunches.com/badge/felixkeuya.com.svg?theme=dark';
+    image.alt = 'Established online - Public launch record';
+    image.width = 255;
+    image.height = 55;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.style.display = 'block';
+    image.style.maxWidth = '100%';
+    image.style.height = 'auto';
+
+    badge.appendChild(image);
+    footerBrand.appendChild(badge);
+  }
+
   showHint();
 })();
