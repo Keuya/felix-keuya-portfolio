@@ -2,21 +2,32 @@
 
 Felix Keuya provides fixed-scope and white-label analyst support to renewable energy developers, investors, lenders, advisory firms, EPCs and energy platforms across Africa and emerging markets.
 
+Canonical website: https://felix-keuya-portfolio.vercel.app/
+Location: Nairobi, Kenya
+Contact: felixkeuya@gmail.com
+LinkedIn: https://www.linkedin.com/in/felix-keuya/
+
 ## Core services
-- Renewable project opportunity screening
-- Lender-grade financial model review and sensitivity analysis
-- Investment committee memos, lender packs and project valuation
-- Corporate PPA, electricity wheeling and commercial analysis
-- Grid-connection, curtailment and contract-risk analysis
-- African power-market and project-development diligence
-- Embedded white-label analyst support
+
+- Renewable energy project finance analysis: https://felix-keuya-portfolio.vercel.app/services/renewable-energy-project-finance-africa.html
+  - Project screening, financial model review, debt sizing, CFADS, DSCR, LLCR, PLCR, PPA analysis, sensitivities, lender-style risk review and investment decision support.
+- Solar PV and BESS financial modelling: https://felix-keuya-portfolio.vercel.app/services/solar-bess-financial-modelling.html
+  - Revenue, CAPEX/OPEX, storage assumptions, debt schedules, reserve accounts, repayment profiles, IRR and downside cases.
+- PPA and wheeling financial analysis: https://felix-keuya-portfolio.vercel.app/services/ppa-wheeling-analysis-africa.html
+  - Tariffs, network charges, losses, residual supply, buyer savings, generator returns and curtailment analysis.
+- Renewable energy market due diligence: https://felix-keuya-portfolio.vercel.app/services/renewable-energy-market-due-diligence-africa.html
+  - Regulation, tariffs, demand, grid constraints, offtaker risk, procurement, project pipelines and financing conditions.
+- White-label renewable energy analyst support: https://felix-keuya-portfolio.vercel.app/services/white-label-energy-analyst-support.html
+  - Confidential models, research, investment memos, project screening, databases and presentations for client teams.
 
 ## Public financial model library
+
 The following synthetic Excel models can be inspected online and downloaded. They do not contain confidential client information.
 - Solar IPP project-finance model: https://felix-keuya-portfolio.vercel.app/models/public-solar-ipp-model.html
 - South Africa corporate PPA and wheeling model: https://felix-keuya-portfolio.vercel.app/models/sa-corporate-ppa-wheeling-model.html
 
 ## Detailed project case studies
+
 - Zambia solar IPP financial model and lender review: https://felix-keuya-portfolio.vercel.app/projects/zambia-solar-project-finance-model.html
 - South Africa corporate PPA and wheeling commercial case: https://felix-keuya-portfolio.vercel.app/projects/south-africa-corporate-ppa-wheeling.html
 - Grid connection and curtailment risk analysis: https://felix-keuya-portfolio.vercel.app/projects/grid-connection-curtailment-analysis.html
@@ -24,13 +35,15 @@ The following synthetic Excel models can be inspected online and downloaded. The
 - Zambia, DRC and wider African renewable project portfolio: https://felix-keuya-portfolio.vercel.app/projects/africa-renewable-project-development-portfolio.html
 
 ## Main pages
-- https://felix-keuya-portfolio.vercel.app/
-- https://felix-keuya-portfolio.vercel.app/services.html
-- https://felix-keuya-portfolio.vercel.app/work.html
-- https://felix-keuya-portfolio.vercel.app/request.html
-- https://felix-keuya-portfolio.vercel.app/resume.html
 
-## Contact
-Email: felixkeuya@gmail.com
-LinkedIn: https://www.linkedin.com/in/felix-keuya/
-Location: Nairobi, Kenya
+- Home: https://felix-keuya-portfolio.vercel.app/
+- Services overview: https://felix-keuya-portfolio.vercel.app/services.html
+- Selected work: https://felix-keuya-portfolio.vercel.app/work.html
+- Models and samples: https://felix-keuya-portfolio.vercel.app/samples.html
+- Engagement process: https://felix-keuya-portfolio.vercel.app/engagement.html
+- Project brief / contact: https://felix-keuya-portfolio.vercel.app/request.html
+- Resume: https://felix-keuya-portfolio.vercel.app/resume.html
+
+## Positioning
+
+Felix Keuya combines an engineering foundation with project finance, commercial diligence and power-market analysis. The portfolio is intended for renewable energy developers, infrastructure investors, lenders, advisers, specialist consultancies and energy platforms that need practical project finance or analyst support.
