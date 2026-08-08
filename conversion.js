@@ -1,4 +1,23 @@
 (() => {
+  const siteOrigin = "https://felixkeuya.com";
+  const params = new URLSearchParams(window.location.search);
+
+  /* Preserve the first useful touchpoint for project enquiries in this browser session. */
+  try {
+    if (!sessionStorage.getItem("fk_landing_url")) {
+      sessionStorage.setItem("fk_landing_url", window.location.href);
+    }
+    if (!sessionStorage.getItem("fk_initial_referrer")) {
+      sessionStorage.setItem("fk_initial_referrer", document.referrer || "Direct");
+    }
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+      const value = params.get(key);
+      if (value && !sessionStorage.getItem(`fk_${key}`)) sessionStorage.setItem(`fk_${key}`, value);
+    });
+  } catch (_) {
+    /* Attribution is helpful, but the site must continue if storage is unavailable. */
+  }
+
   const decisions = {
     screen: {
       eyebrow: "Project screen",
@@ -76,7 +95,6 @@
   const serviceSelect = document.querySelector('#service-select');
   const serviceHint = document.querySelector('[data-service-hint]');
   const howFoundSelect = document.querySelector('select[name="How found"]');
-  const params = new URLSearchParams(window.location.search);
   const hints = {
     "Project screen": "For an early go, pause or review decision.",
     "Model review": "For model logic, debt, returns and downside cases.",
@@ -106,10 +124,48 @@
       google: 'Web search',
       bing: 'Web search',
       search: 'Web search',
+      chatgpt: 'Web search',
       github: 'GitHub',
       referral: 'Referral'
     };
     if (sourceMap[source]) howFoundSelect.value = sourceMap[source];
+  }
+
+  const intakeForm = document.querySelector("form.intake-form");
+  if (intakeForm) {
+    const nextField = intakeForm.querySelector('input[name="_next"]');
+    if (nextField) nextField.value = `${siteOrigin}/thank-you.html`;
+
+    const addHidden = (name, value) => {
+      if (!value || intakeForm.querySelector(`input[name="${name}"]`)) return;
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      input.value = value;
+      intakeForm.appendChild(input);
+    };
+
+    let stored = {};
+    try {
+      stored = {
+        landing: sessionStorage.getItem("fk_landing_url"),
+        referrer: sessionStorage.getItem("fk_initial_referrer"),
+        source: sessionStorage.getItem("fk_utm_source"),
+        medium: sessionStorage.getItem("fk_utm_medium"),
+        campaign: sessionStorage.getItem("fk_utm_campaign"),
+        content: sessionStorage.getItem("fk_utm_content"),
+        term: sessionStorage.getItem("fk_utm_term")
+      };
+    } catch (_) {}
+
+    addHidden("Landing page", stored.landing || window.location.href);
+    addHidden("Initial referrer", stored.referrer || document.referrer || "Direct");
+    addHidden("UTM source", params.get("utm_source") || stored.source || "");
+    addHidden("UTM medium", params.get("utm_medium") || stored.medium || "");
+    addHidden("UTM campaign", params.get("utm_campaign") || stored.campaign || "");
+    addHidden("UTM content", params.get("utm_content") || stored.content || "");
+    addHidden("UTM term", params.get("utm_term") || stored.term || "");
+    addHidden("Enquiry page", `${window.location.origin}${window.location.pathname}`);
   }
 
   showHint();
