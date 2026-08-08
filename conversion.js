@@ -75,6 +75,8 @@
 
   const serviceSelect = document.querySelector('#service-select');
   const serviceHint = document.querySelector('[data-service-hint]');
+  const howFoundSelect = document.querySelector('select[name="How found"]');
+  const params = new URLSearchParams(window.location.search);
   const hints = {
     "Project screen": "For an early go, pause or review decision.",
     "Model review": "For model logic, debt, returns and downside cases.",
@@ -89,6 +91,26 @@
     serviceHint.textContent = text;
     serviceHint.classList.toggle("visible", Boolean(text));
   };
-  serviceSelect?.addEventListener("change", showHint);
+
+  if (serviceSelect) {
+    const requestedService = params.get('service');
+    const validService = [...serviceSelect.options].some((option) => option.value === requestedService || option.text === requestedService);
+    if (requestedService && validService) serviceSelect.value = requestedService;
+    serviceSelect.addEventListener("change", showHint);
+  }
+
+  if (howFoundSelect && !howFoundSelect.value) {
+    const source = (params.get('utm_source') || params.get('source') || '').toLowerCase();
+    const sourceMap = {
+      linkedin: 'LinkedIn',
+      google: 'Web search',
+      bing: 'Web search',
+      search: 'Web search',
+      github: 'GitHub',
+      referral: 'Referral'
+    };
+    if (sourceMap[source]) howFoundSelect.value = sourceMap[source];
+  }
+
   showHint();
 })();
